@@ -679,7 +679,7 @@
     resultsBody.innerHTML = "";
 
     try {
-      const url = `${SUPABASE_URL}/rest/v1/v_likert_aggregates?instance_key=eq.${encodeURIComponent(SURVEY_INSTANCE_KEY)}&select=*`;
+      const url = `${SUPABASE_URL}/rest/v1/survey_likert_aggregates?instance_key=eq.${encodeURIComponent(SURVEY_INSTANCE_KEY)}&select=*`;
       const res = await fetch(url, {
         headers: {
           "apikey": SUPABASE_ANON_KEY,
