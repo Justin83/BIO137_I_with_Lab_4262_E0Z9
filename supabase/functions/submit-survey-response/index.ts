@@ -179,8 +179,12 @@ Deno.serve(async (req: Request) => {
     return jsonError("Invalid JSON body", 400, origin);
   }
 
-  const instanceKey = body.instance_key;
-  const answers = body.answers;
+  const instanceKey  = body.instance_key;
+  const answers      = body.answers;
+  const rawFirstName = typeof body.first_name === 'string' ? body.first_name.trim() : null;
+  const firstName    = rawFirstName && rawFirstName.length > 0
+    ? rawFirstName.slice(0, 50)
+    : null;
 
   if (typeof instanceKey !== "string" || !ALLOWED_INSTANCE_KEYS.includes(instanceKey)) {
     return jsonError("Unknown survey instance.", 400, origin);
@@ -269,12 +273,15 @@ Deno.serve(async (req: Request) => {
     const userAgent = req.headers.get("user-agent") || "";
     const respondentHash = await hashRespondent(instance.id, ip, userAgent, salt);
 
-    // Upsert submission
+    // Upsert submission (update first name on re-submit so student can correct it)
     const submissions = await sql`
-      INSERT INTO course_survey.survey_submissions (survey_instance_id, respondent_hash, updated_at)
-      VALUES (${instance.id}, ${respondentHash}, now())
+      INSERT INTO course_survey.survey_submissions
+        (survey_instance_id, respondent_hash, respondent_first_name, updated_at)
+      VALUES (${instance.id}, ${respondentHash}, ${firstName}, now())
       ON CONFLICT (survey_instance_id, respondent_hash)
-      DO UPDATE SET updated_at = now()
+      DO UPDATE SET
+        updated_at             = now(),
+        respondent_first_name  = EXCLUDED.respondent_first_name
       RETURNING id
     `;
 
