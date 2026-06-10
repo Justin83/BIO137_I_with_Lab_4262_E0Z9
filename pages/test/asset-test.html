@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIO 137 Asset / Path Test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #e9f0f8;
+      color: #172033;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 900px; margin: auto; padding: 24px; }
+    .card {
+      background: #fff;
+      border: 1px solid #d8e2ef;
+      border-top: 8px solid #08315f;
+      border-radius: 4px;
+      padding: 24px;
+      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
+    }
+    h1 { color: #08315f; margin: 0 0 4px; font-size: 1.6rem; }
+    p.lead { color: #5f6f86; margin: 0 0 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .tile {
+      border: 1px solid #d8e2ef;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      background: #fbfdff;
+    }
+    .tile .frame {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px dashed #c7d6e8;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .tile img { max-width: 100%; max-height: 120px; }
+    .tile .label { margin-top: 10px; font-weight: 700; color: #08315f; font-size: .92rem; }
+    .tile .path { font-family: monospace; font-size: .78rem; color: #5f6f86; word-break: break-all; }
+    .note {
+      margin-top: 20px;
+      border-left: 6px solid #c69214;
+      background: #fff8e5;
+      padding: 12px 14px;
+      font-size: .92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>BIO 137 Asset / Path Test</h1>
+      <p class="lead">If this page loads and every image below appears, nested GitHub Pages paths and the
+        <code>pages/assets/</code> folder are serving correctly. Broken tiles show the alt text instead of an image.</p>
+
+      <div class="grid">
+        <div class="tile">
+          <div class="frame"><img src="../assets/blackboard.jpg" alt="Blackboard — FAILED TO LOAD"></div>
+          <div class="label">Blackboard</div>
+          <div class="path">../assets/blackboard.jpg</div>
+        </div>
+        <div class="tile">
+          <div class="frame"><img src="../assets/mcgraw-hill-logo-png.png" alt="McGraw Hill — FAILED TO LOAD"></div>
+          <div class="label">McGraw Hill</div>
+          <div class="path">../assets/mcgraw-hill-logo-png.png</div>
+        </div>
+        <div class="tile">
+          <div class="frame"><img src="../assets/connect.jpg" alt="Connect — FAILED TO LOAD"></div>
+          <div class="label">Connect</div>
+          <div class="path">../assets/connect.jpg</div>
+        </div>
+        <div class="tile">
+          <div class="frame"><img src="../assets/Module%20Overview.png" alt="Module Overview — FAILED TO LOAD"></div>
+          <div class="label">Module Overview</div>
+          <div class="path">../assets/Module%20Overview.png</div>
+        </div>
+        <div class="tile">
+          <div class="frame"><img src="../assets/To-Do%20List.png" alt="To-Do List — FAILED TO LOAD"></div>
+          <div class="label">To-Do List</div>
+          <div class="path">../assets/To-Do%20List.png</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>How to read this page:</strong> file names containing spaces
+        (<code>Module Overview.png</code>, <code>To-Do List.png</code>) are referenced with
+        <code>%20</code> in place of each space, which is the safest form for GitHub Pages URLs.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
