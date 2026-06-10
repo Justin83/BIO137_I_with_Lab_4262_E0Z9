@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIO 137 Module 3 Overview</title>
+  <style>
+    :root {
+      --blue: #08315f;
+      --blue2: #0d4d8c;
+      --gold: #c69214;
+      --ink: #172033;
+      --muted: #5f6f86;
+      --line: #dbe5f1;
+      --paper: #ffffff;
+      --soft: #f5f8fc;
+      --green: #137a39;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #e9f0f8;
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: 1000px; margin: auto; padding: 24px; }
+    .doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .banner { display: block; width: 100%; height: auto; }
+
+    .titlewrap { padding: 22px 30px 6px; }
+    .eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
+    .titlewrap h1 { margin: 6px 0 4px; color: var(--blue); font-size: 1.9rem; line-height: 1.1; }
+    .titlewrap .meta { color: var(--muted); font-weight: 700; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .chip { background: #eaf1fb; border: 1px solid var(--line); border-radius: 12px; padding: 9px 14px; }
+    .chip b { color: var(--blue); display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
+    .chip span { font-weight: 700; }
+
+    .section { padding: 22px 30px; border-top: 1px solid var(--line); }
+    h2 { color: var(--blue); font-size: 1.32rem; margin: 0 0 12px; padding-left: 12px; border-left: 5px solid var(--gold); }
+    p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
+
+    .why {
+      border-left: 6px solid var(--gold);
+      background: #fff8e5;
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .objs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .obj { display: flex; gap: 12px; background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    .obj .n { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px; background: var(--blue); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+    .obj p { margin: 0; align-self: center; font-weight: 600; }
+
+    .todo { list-style: none; margin: 8px 0 0; padding: 0; }
+    .todo li { display: flex; gap: 11px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .todo li:last-child { border-bottom: 0; }
+    .todo .ck { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 999px; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .todo .ck svg { width: 13px; height: 13px; }
+
+    .footer { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0; }
+
+    @media (max-width: 720px) {
+      .objs { grid-template-columns: 1fr; }
+      .titlewrap h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="doc">
+
+      <img class="banner" src="../assets/Module%20Overview.png" alt="Module Overview — Somerset Community College">
+
+      <div class="titlewrap">
+        <div class="eyebrow">Unit 3 · Module 3 · BIO 137 Summer 2026</div>
+        <h1>The Skeletal &amp; Muscular Systems</h1>
+        <div class="meta">Chapters 7–9 · Three chapters, three labs, one case study, and Unit 3 exams</div>
+        <div class="chips">
+          <div class="chip"><b>Chapter 7</b><span>Skeletal System</span></div>
+          <div class="chip"><b>Chapter 8</b><span>Joints of the Skeletal System (Articulations)</span></div>
+          <div class="chip"><b>Chapter 9</b><span>Muscular System</span></div>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>Why It Matters</h2>
+        <div class="why">
+          <p>Unit 3 provides you with an in-depth study of the skeletal (Chapters 7 &amp; 8) and muscular (Chapter 9) systems. You will really be using the anatomic terminology you learned in Chapter 1. You will apply what you're learning to understand how the bones protect us, provide structural support, store chemicals like calcium and phosphate, and host the production of blood.</p>
+          <p>You'll also apply what you've learned about cells and tissues to understand the unique functions of the muscular system and how this system provides movement, protection, and support. These two systems work together to give us both stability and movement. Enjoy learning about your amazing body!</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Learning Objectives</h2>
+        <p>By the end of this module, you will be able to demonstrate competency in the following:</p>
+        <div class="objs">
+          <div class="obj"><span class="n">1</span><p>Recognize major structures of the skeletal and muscular systems.</p></div>
+          <div class="obj"><span class="n">2</span><p>Explain how structure and function are related in these systems to support body function.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How to Navigate This Module</h2>
+        <p>Be sure to complete the assignments in the order listed! This module covers three chapters and three labs. Begin each chapter by reading through that chapter on your own using the digital e-text or, if you prefer, the optional hard copy you purchased. Once you are familiar with the chapter, you can complete the assignments more effectively.</p>
+        <p>Within each module, you will find an interactive reading assignment and quiz over each chapter, three lab exercises (some labs have two parts) and three lab quizzes, one Case Study assignment, one Lecture Exam, and one Lab Exam. Some modules also include videos to support your studies.</p>
+      </section>
+
+      <section class="section">
+        <img class="banner" src="../assets/To-Do%20List.png" alt="To-Do List — Somerset Community College" style="border:1px solid var(--line); border-radius:8px;">
+        <ul class="todo">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Read each chapter.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete the three interactive Chapter assignments for each chapter, working until you earn at least 80–90% or above.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete the Chapter Practice Quiz for each chapter, repeating up to three times if desired to improve your score and confidence.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete each of the three Lab Exercises (some have two parts).</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete each of the three Lab Quizzes, repeating up to three times if desired to improve your score and confidence.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete the Case Study assignment over material from all three chapters.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Take the Lecture Exam that covers material from all three chapters.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Take the Lab Exam that covers material from all three labs.</span></li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Give feedback about your experience in this unit / module.</span></li>
+        </ul>
+      </section>
+
+    </main>
+    <p class="footer">BIO 137 Human Anatomy &amp; Physiology I · Summer 2026 · Module 3 Overview</p>
+  </div>
+</body>
+</html>
