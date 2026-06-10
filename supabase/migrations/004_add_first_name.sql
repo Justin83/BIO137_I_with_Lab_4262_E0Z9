@@ -16,11 +16,11 @@ SELECT
   sq.question_key,
   sq.question_text,
   sa.answer_text,
-  ss.respondent_first_name,
   sa.is_public,
   sa.is_flagged,
   sa.instructor_selected,
-  sa.created_at
+  sa.created_at,
+  ss.respondent_first_name
 FROM course_survey.survey_answers sa
 JOIN course_survey.survey_submissions ss
   ON ss.id = sa.submission_id
