@@ -117,19 +117,23 @@ Deno.serve(async (req: Request) => {
 
     const sql = postgres(dbUrl, { prepare: false });
     try {
-      const rows = await sql`
+      // Total unique respondents
+      const totalRows = await sql`
+        SELECT COUNT(DISTINCT ss.id)::int AS total
+        FROM course_survey.survey_submissions ss
+        JOIN course_survey.survey_instances si ON si.id = ss.survey_instance_id
+        WHERE si.instance_key = ${instanceKey}
+          AND si.results_visible = true
+      `;
+      const total = Number(totalRows[0]?.total ?? 0);
+
+      // Answer counts per question + value
+      const answerRows = await sql`
         SELECT
-          si.id                AS survey_instance_id,
-          si.instance_key,
           sq.question_key,
           sq.question_text,
           sa.answer_value,
-          COUNT(sa.id)::int    AS response_count,
-          (
-            SELECT COUNT(DISTINCT ss2.id)::int
-            FROM course_survey.survey_submissions ss2
-            WHERE ss2.survey_instance_id = si.id
-          )                    AS total_responses
+          COUNT(sa.id)::int AS response_count
         FROM course_survey.survey_instances si
         JOIN course_survey.survey_questions sq
           ON sq.survey_template_id = si.survey_template_id
@@ -140,9 +144,17 @@ Deno.serve(async (req: Request) => {
          AND sa.answer_value IS NOT NULL
         WHERE si.instance_key = ${instanceKey}
           AND si.results_visible = true
-        GROUP BY si.id, si.instance_key, sq.question_key, sq.question_text, sa.answer_value
+        GROUP BY sq.display_order, sq.question_key, sq.question_text, sa.answer_value
         ORDER BY sq.display_order, sa.answer_value
       `;
+
+      const rows = answerRows.map((r: Record<string, unknown>) => ({
+        question_key:   r.question_key,
+        question_text:  r.question_text,
+        answer_value:   r.answer_value,
+        response_count: Number(r.response_count ?? 0),
+        total_responses: total,
+      }));
 
       return new Response(JSON.stringify({ ok: true, rows }), {
         status: 200,
