@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Here Module Feedback | BIO 137</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #08315f;
+      --navy-mid: #0d4a8a;
+      --slate:  #3a5a7c;
+      --slate-light: #e8eef4;
+      --gold:   #c69214;
+      --text:   #1a1e24;
+      --muted:  #5a6575;
+      --border: #d0d8e2;
+      --bg:     #f4f6f9;
+      --white:  #ffffff;
+      --green:  #2a7a4e;
+      --red:    #b03030;
+
+      --bar-sa:  #08315f;
+      --bar-a:   #3a7bbf;
+      --bar-d:   #a0b4c8;
+      --bar-sd:  #d0dde8;
+
+      --radius: 6px;
+      --shadow: 0 1px 4px rgba(0,0,0,.08), 0 2px 12px rgba(0,0,0,.05);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 24px 16px 48px;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .survey-header {
+      border-top: 4px solid var(--navy);
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 32px 24px;
+      margin-bottom: 20px;
+    }
+
+    .course-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 6px;
+    }
+
+    .survey-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .survey-intro {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .anon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      background: #eaf5ee;
+      border: 1px solid #b8ddc5;
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-top: 12px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Questions ── */
+    .question-block {
+      margin-bottom: 28px;
+    }
+
+    .question-block:last-child { margin-bottom: 0; }
+
+    .question-text {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .question-num {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--slate);
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* Likert radio row */
+    .likert-options {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .likert-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .12s, border-color .12s;
+      user-select: none;
+    }
+
+    .likert-option:hover {
+      background: var(--slate-light);
+      border-color: var(--slate);
+    }
+
+    .likert-option input[type="radio"] {
+      accent-color: var(--navy);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .likert-option input[type="radio"]:checked + .option-label {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .likert-option:has(input:checked) {
+      background: var(--slate-light);
+      border-color: var(--navy-mid);
+    }
+
+    .option-label {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    /* Open text */
+    .open-text-area {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      resize: vertical;
+      min-height: 90px;
+      transition: border-color .12s;
+      outline: none;
+    }
+
+    .open-text-area:focus {
+      border-color: var(--navy-mid);
+      box-shadow: 0 0 0 3px rgba(13,74,138,.12);
+    }
+
+    .char-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .required-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* ── Submit area ── */
+    .submit-wrap {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-submit {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background .15s;
+    }
+
+    .btn-submit:hover:not(:disabled) { background: var(--navy-mid); }
+
+    .btn-submit:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .form-status {
+      font-size: 13.5px;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      display: none;
+    }
+
+    .form-status.submitting {
+      display: block;
+      color: var(--slate);
+      background: var(--slate-light);
+      border: 1px solid var(--border);
+    }
+
+    .form-status.success {
+      display: block;
+      color: var(--green);
+      background: #eaf5ee;
+      border: 1px solid #b8ddc5;
+    }
+
+    .form-status.error {
+      display: block;
+      color: var(--red);
+      background: #fdf0f0;
+      border: 1px solid #e8bbbb;
+    }
+
+    .validation-error {
+      font-size: 12px;
+      color: var(--red);
+      margin-top: 5px;
+      display: none;
+    }
+
+    .question-block.has-error .likert-options .likert-option {
+      border-color: #e8bbbb;
+    }
+
+    .question-block.has-error .validation-error { display: block; }
+
+    /* ── Results block ── */
+    .results-section { display: none; }
+    .results-section.visible { display: block; }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .results-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .response-count {
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--slate-light);
+      border-radius: 20px;
+      padding: 3px 12px;
+    }
+
+    .result-question {
+      margin-bottom: 22px;
+    }
+
+    .result-question-text {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .bar-label {
+      font-size: 12.5px;
+      color: var(--muted);
+      width: 120px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 18px;
+      background: #edf0f4;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width .5s ease;
+    }
+
+    .bar-fill.sa  { background: var(--bar-sa); }
+    .bar-fill.a   { background: var(--bar-a); }
+    .bar-fill.d   { background: var(--bar-d); }
+    .bar-fill.sd  { background: var(--bar-sd); border: 1px solid #b0bec9; }
+
+    .bar-stat {
+      font-size: 12px;
+      color: var(--muted);
+      width: 70px;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 18px 0;
+    }
+
+    .results-loading {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 12px 0;
+    }
+
+    .no-results-note {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 580px) {
+      .survey-header, .card { padding: 20px 18px; }
+      .survey-title { font-size: 18px; }
+      .bar-label { width: 90px; font-size: 11px; }
+      .bar-stat { width: 56px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="survey-header">
+    <div class="course-label">BIO 137 &mdash; Summer 2026 &mdash; Section E0Z9</div>
+    <h1 class="survey-title">Start Here Module Feedback</h1>
+    <p class="survey-intro">Please answer these quick questions about the Start Here module. Your response is anonymous and helps me improve the course setup for this class and future classes.</p>
+    <div class="anon-badge">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="3" y="7" width="10" height="8" rx="1.5" stroke="#2a7a4e" stroke-width="1.5"/>
+        <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="#2a7a4e" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Anonymous &mdash; no names, emails, or IDs collected
+    </div>
+  </div>
+
+  <!-- Survey form -->
+  <div class="card">
+    <form id="survey-form" novalidate>
+      <p class="required-note">Questions 1&ndash;4 are required. Question 5 is optional.</p>
+
+      <!-- Q1 -->
+      <div class="question-block" id="block-navigation_easy">
+        <div class="question-text">
+          <span class="question-num">1</span>
+          The Start Here module was easy to navigate.
+        </div>
+        <div class="likert-options" role="radiogroup" aria-labelledby="q1-label">
+          <label class="likert-option">
+            <input type="radio" name="navigation_easy" value="strongly_agree" required />
+            <span class="option-label">Strongly agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="navigation_easy" value="agree" />
+            <span class="option-label">Agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="navigation_easy" value="disagree" />
+            <span class="option-label">Disagree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="navigation_easy" value="strongly_disagree" />
+            <span class="option-label">Strongly disagree</span>
+          </label>
+        </div>
+        <div class="validation-error" id="err-navigation_easy">Please select a response.</div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Q2 -->
+      <div class="question-block" id="block-organized_info">
+        <div class="question-text">
+          <span class="question-num">2</span>
+          The information in the Start Here module was organized in a way that made sense to me.
+        </div>
+        <div class="likert-options" role="radiogroup">
+          <label class="likert-option">
+            <input type="radio" name="organized_info" value="strongly_agree" required />
+            <span class="option-label">Strongly agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="organized_info" value="agree" />
+            <span class="option-label">Agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="organized_info" value="disagree" />
+            <span class="option-label">Disagree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="organized_info" value="strongly_disagree" />
+            <span class="option-label">Strongly disagree</span>
+          </label>
+        </div>
+        <div class="validation-error" id="err-organized_info">Please select a response.</div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Q3 -->
+      <div class="question-block" id="block-course_info_found">
+        <div class="question-text">
+          <span class="question-num">3</span>
+          After completing the Start Here module, I know where to find important course information such as the syllabus, schedule, assignments, grades, and instructor contact information.
+        </div>
+        <div class="likert-options" role="radiogroup">
+          <label class="likert-option">
+            <input type="radio" name="course_info_found" value="strongly_agree" required />
+            <span class="option-label">Strongly agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="course_info_found" value="agree" />
+            <span class="option-label">Agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="course_info_found" value="disagree" />
+            <span class="option-label">Disagree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="course_info_found" value="strongly_disagree" />
+            <span class="option-label">Strongly disagree</span>
+          </label>
+        </div>
+        <div class="validation-error" id="err-course_info_found">Please select a response.</div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Q4 -->
+      <div class="question-block" id="block-first_steps_clear">
+        <div class="question-text">
+          <span class="question-num">4</span>
+          The Start Here module helped me understand what I should do first in this course.
+        </div>
+        <div class="likert-options" role="radiogroup">
+          <label class="likert-option">
+            <input type="radio" name="first_steps_clear" value="strongly_agree" required />
+            <span class="option-label">Strongly agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="first_steps_clear" value="agree" />
+            <span class="option-label">Agree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="first_steps_clear" value="disagree" />
+            <span class="option-label">Disagree</span>
+          </label>
+          <label class="likert-option">
+            <input type="radio" name="first_steps_clear" value="strongly_disagree" />
+            <span class="option-label">Strongly disagree</span>
+          </label>
+        </div>
+        <div class="validation-error" id="err-first_steps_clear">Please select a response.</div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Q5 -->
+      <div class="question-block" id="block-improvement_suggestion">
+        <div class="question-text">
+          <span class="question-num">5</span>
+          What is one thing that would make the Start Here module easier to use or understand?
+          <span style="font-weight:400; color:var(--muted);"> (Optional)</span>
+        </div>
+        <textarea
+          class="open-text-area"
+          name="improvement_suggestion"
+          id="improvement_suggestion"
+          maxlength="1000"
+          placeholder="Your suggestion (optional)"
+          aria-label="Open-ended improvement suggestion"
+        ></textarea>
+        <div class="char-hint">Max 1,000 characters. Not displayed publicly without instructor review.</div>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn-submit" id="submit-btn">Submit Anonymous Feedback</button>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Results block -->
+  <div class="card results-section" id="results-section">
+    <div class="results-header">
+      <div class="results-title">Class Results</div>
+      <div class="response-count" id="response-count-badge">Loading&hellip;</div>
+    </div>
+    <div id="results-loading" class="results-loading">Loading results&hellip;</div>
+    <div id="results-body"></div>
+  </div>
+
+</div>
+
+<script>
+  // ── Configuration ──────────────────────────────────────────────────────────
+  const SUPABASE_URL      = "https://efxymeviokaocosmpqwf.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVmeHltZXZpb2thb2Nvc21wcXdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NTg3OTUsImV4cCI6MjA5NjMzNDc5NX0.ecdW5HYsXsrjIFRIrf_PtcrFxKJB54Z00MTTRj_3Tno";
+  const SUBMIT_ENDPOINT   = "https://efxymeviokaocosmpqwf.supabase.co/functions/v1/submit-survey-response";
+  // e.g. "https://<ref>.supabase.co/functions/v1/submit-survey-response"
+
+  const SURVEY_INSTANCE_KEY = "bio137_2026_summer_e0z9_start_here_feedback";
+
+  // ── Likert display order and labels ───────────────────────────────────────
+  const LIKERT_KEYS = [
+    "navigation_easy",
+    "organized_info",
+    "course_info_found",
+    "first_steps_clear",
+  ];
+
+  const LIKERT_LABELS = {
+    navigation_easy:   "The Start Here module was easy to navigate.",
+    organized_info:    "The information in the Start Here module was organized in a way that made sense to me.",
+    course_info_found: "After completing the Start Here module, I know where to find important course information.",
+    first_steps_clear: "The Start Here module helped me understand what I should do first in this course.",
+  };
+
+  const VALUE_DISPLAY = [
+    { value: "strongly_agree",    label: "Strongly agree",    cls: "sa"  },
+    { value: "agree",             label: "Agree",             cls: "a"   },
+    { value: "disagree",          label: "Disagree",          cls: "d"   },
+    { value: "strongly_disagree", label: "Strongly disagree", cls: "sd"  },
+  ];
+
+  // ── Form validation ────────────────────────────────────────────────────────
+  function validateForm() {
+    let valid = true;
+    for (const key of LIKERT_KEYS) {
+      const block = document.getElementById("block-" + key);
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      if (!selected) {
+        block.classList.add("has-error");
+        valid = false;
+      } else {
+        block.classList.remove("has-error");
+      }
+    }
+    return valid;
+  }
+
+  // ── Form submit ────────────────────────────────────────────────────────────
+  const form       = document.getElementById("survey-form");
+  const submitBtn  = document.getElementById("submit-btn");
+  const statusEl   = document.getElementById("form-status");
+
+  function setStatus(type, msg) {
+    statusEl.className = "form-status " + type;
+    statusEl.textContent = msg;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      setStatus("error", "Please answer all required questions (1–4) before submitting.");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    setStatus("submitting", "Submitting your response…");
+
+    const answers = [];
+
+    for (const key of LIKERT_KEYS) {
+      const el = document.querySelector(`input[name="${key}"]:checked`);
+      if (el) {
+        answers.push({ question_key: key, answer_value: el.value });
+      }
+    }
+
+    const textVal = document.getElementById("improvement_suggestion").value.trim();
+    if (textVal.length > 0) {
+      answers.push({ question_key: "improvement_suggestion", answer_text: textVal });
+    }
+
+    try {
+      const res = await fetch(SUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ instance_key: SURVEY_INSTANCE_KEY, answers }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.ok) {
+        setStatus("success", "Thank you — your anonymous response has been recorded.");
+        submitBtn.textContent = "Response Submitted";
+        form.querySelectorAll("input, textarea, button").forEach((el) => {
+          el.disabled = true;
+        });
+        loadResults();
+        showResultsSection();
+      } else {
+        const msg = data.error && typeof data.error === "string"
+          ? data.error
+          : "The survey could not be submitted right now. Please try again later.";
+        setStatus("error", msg);
+        submitBtn.disabled = false;
+      }
+    } catch {
+      setStatus("error", "The survey could not be submitted right now. Please try again later.");
+      submitBtn.disabled = false;
+    }
+  });
+
+  // ── Results ────────────────────────────────────────────────────────────────
+  function showResultsSection() {
+    document.getElementById("results-section").classList.add("visible");
+  }
+
+  async function loadResults() {
+    if (SUPABASE_URL === "PASTE_SUPABASE_PROJECT_URL_HERE") return;
+
+    const resultsBody   = document.getElementById("results-body");
+    const loadingEl     = document.getElementById("results-loading");
+    const countBadge    = document.getElementById("response-count-badge");
+
+    loadingEl.textContent = "Loading results…";
+    resultsBody.innerHTML = "";
+
+    try {
+      const url = `${SUPABASE_URL}/rest/v1/v_likert_aggregates?instance_key=eq.${encodeURIComponent(SURVEY_INSTANCE_KEY)}&select=*`;
+      const res = await fetch(url, {
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+          "Accept": "application/json",
+        },
+      });
+
+      if (!res.ok) throw new Error("Failed to load results");
+      const rows = await res.json();
+
+      if (!Array.isArray(rows) || rows.length === 0) {
+        loadingEl.style.display = "none";
+        resultsBody.innerHTML = '<p class="no-results-note">No results yet. Be the first to respond.</p>';
+        countBadge.textContent = "0 responses";
+        return;
+      }
+
+      // Determine total
+      const total = rows[0].total_responses || 0;
+      countBadge.textContent = total === 1 ? "1 response" : `${total} responses`;
+      loadingEl.style.display = "none";
+
+      // Build a map: question_key → { value → { count, pct } }
+      const byQuestion = {};
+      for (const row of rows) {
+        const qk = row.question_key;
+        if (!byQuestion[qk]) byQuestion[qk] = {};
+        byQuestion[qk][row.answer_value] = {
+          count: row.response_count || 0,
+          pct:   parseFloat(row.percent_of_responses) || 0,
+        };
+      }
+
+      const html = [];
+      for (const qk of LIKERT_KEYS) {
+        const qLabel = LIKERT_LABELS[qk] || qk;
+        const data   = byQuestion[qk] || {};
+
+        html.push(`<div class="result-question">`);
+        html.push(`  <div class="result-question-text">${escHtml(qLabel)}</div>`);
+
+        for (const { value, label, cls } of VALUE_DISPLAY) {
+          const d   = data[value] || { count: 0, pct: 0 };
+          const pct = d.pct;
+          html.push(`
+  <div class="bar-row">
+    <div class="bar-label">${escHtml(label)}</div>
+    <div class="bar-track">
+      <div class="bar-fill ${cls}" style="width:${pct}%"></div>
+    </div>
+    <div class="bar-stat">${pct.toFixed(0)}% &nbsp;(${d.count})</div>
+  </div>`);
+        }
+
+        html.push(`</div><hr class="divider" />`);
+      }
+
+      // Remove trailing divider
+      if (html.length > 0) html.pop();
+
+      resultsBody.innerHTML = html.join("");
+    } catch {
+      loadingEl.textContent = "Results are temporarily unavailable.";
+    }
+  }
+
+  function escHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  // Auto-load results on page load (shows after configuration is complete)
+  window.addEventListener("load", () => {
+    if (SUPABASE_URL !== "PASTE_SUPABASE_PROJECT_URL_HERE") {
+      showResultsSection();
+      loadResults();
+    }
+  });
+</script>
+</body>
+</html>
