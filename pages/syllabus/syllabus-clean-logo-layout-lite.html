@@ -103,15 +103,52 @@
     }
     .grade b { display: block; font-size: 1.45rem; color: var(--blue); }
     .footer { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0; }
+
+    /* ── Course Materials Bands ── */
+    .cm-bands { margin: 14px 0 10px; display: flex; flex-direction: column; gap: 8px; }
+    .cmb { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .cmb-id {
+      flex: 0 0 160px; padding: 14px 13px; display: flex; flex-direction: column;
+      gap: 7px; background: var(--soft); border-right: 1px solid var(--line);
+    }
+    .cmb-logo-img { max-width: 120px; max-height: 40px; object-fit: contain; align-self: flex-start; }
+    .cmb-ident { font-weight: 800; font-size: .88rem; letter-spacing: .02em; }
+    .cmb-subdesc { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .cmb-desc { font-size: .76rem; color: var(--muted); line-height: 1.4; margin: 0; }
+    .cmb-feats { flex: 1; display: grid; background: var(--line); gap: 1px; }
+    .cmb-feats.f5 { grid-template-columns: repeat(5, 1fr); }
+    .cmb-feats.f3 { grid-template-columns: repeat(3, 1fr); }
+    .cmb-feats.f6 { grid-template-columns: repeat(3, 1fr); }
+    .cmf { background: var(--paper); padding: 11px 12px; }
+    .cmf-icon {
+      width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; margin-bottom: 6px; flex-shrink: 0;
+    }
+    .cmf-icon svg {
+      width: 14px; height: 14px; stroke: #fff; fill: none;
+      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .cmf-t { font-weight: 700; font-size: .79rem; line-height: 1.3; margin-bottom: 3px; }
+    .cmf-d { font-size: .72rem; color: var(--muted); line-height: 1.4; }
+    .cm-textbook {
+      display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    }
+    .cm-textbook .cmb-id { flex: 0 0 200px; }
+    .cm-tbook-cells { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--line); gap: 1px; }
+    .cm-tbook-cell { background: var(--paper); padding: 12px 13px; }
+    .tc-lbl { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
+    .tc-val { font-size: .83rem; font-weight: 600; line-height: 1.4; }
+
     @media (max-width: 850px) {
-      .head, .cols, .three, .grades, .logos { grid-template-columns: 1fr; }
-      .side {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding-left: 0;
-        padding-top: 16px;
-      }
+      .head, .cols, .three, .grades { grid-template-columns: 1fr; }
+      .side { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 16px; }
       h1 { font-size: 2rem; }
+      .cmb { flex-direction: column; }
+      .cmb-id { flex: none; border-right: 0; border-bottom: 1px solid var(--line); }
+      .cmb-feats.f5 { grid-template-columns: repeat(2, 1fr); }
+      .cmb-feats.f3, .cmb-feats.f6 { grid-template-columns: repeat(2, 1fr); }
+      .cm-textbook { flex-direction: column; }
+      .cm-tbook-cells { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -134,12 +171,6 @@
         </div>
       </header>
 
-      <div class="logos">
-        <div class="logo"><img src="../assets/blackboard.jpg" alt="Blackboard"></div>
-        <div class="logo"><img src="../assets/mcgraw-hill-logo-png.png" alt="McGraw Hill"></div>
-        <div class="logo"><img src="../assets/connect.jpg" alt="Connect"></div>
-      </div>
-
       <section class="section">
         <h2>Course Description</h2>
         <p>BIO 137 Human Anatomy and Physiology I is an introduction to human anatomy and physiology. This course studies the interrelationship of structure and function of each body system across two semesters. The first semester includes basic chemistry, cell structure, cell physiology, metabolism, tissues, and the integumentary, skeletal, muscular, and nervous systems.</p>
@@ -148,24 +179,173 @@
 
       <section class="section">
         <h2>Required Course Materials</h2>
-        <div class="three">
-          <div class="box">
-            <h3>Blackboard</h3>
-            <p>Primary course portal for announcements, course information, assignment links, grades, and instructor communication.</p>
+
+        <div class="cm-bands">
+
+          <!-- BLACKBOARD -->
+          <div class="cmb">
+            <div class="cmb-id">
+              <img class="cmb-logo-img" src="../assets/blackboard.jpg" alt="Blackboard">
+              <p class="cmb-desc">Your primary course hub for communication, content, and updates.</p>
+            </div>
+            <div class="cmb-feats f5">
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#1a1a1a"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm0 0l9 8 9-8"/></svg></div>
+                <div class="cmf-t" style="color:#1a1a1a">Instructor Messages</div>
+                <div class="cmf-d">Blackboard Messages is the primary means of communication. Use Email for urgent matters only.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#1a1a1a"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2.5 2.5 5 5-2.5z"/></svg></div>
+                <div class="cmf-t" style="color:#1a1a1a">Course Orientation</div>
+                <div class="cmf-d">Begin the course and review important information and orientation materials.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#1a1a1a"><svg viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4 4 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a4 4 0 01-1.564-.317z"/></svg></div>
+                <div class="cmf-t" style="color:#1a1a1a">Course Announcements</div>
+                <div class="cmf-d">Stay informed about important updates, changes, and deadlines.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#1a1a1a"><svg viewBox="0 0 24 24"><path d="M6 20V14M10 20V10M14 20V6M18 20V2"/></svg></div>
+                <div class="cmf-t" style="color:#1a1a1a">Grades &amp; Feedback</div>
+                <div class="cmf-d">View your grades, feedback, and overall performance throughout the course.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#1a1a1a"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm3 4h6"/></svg></div>
+                <div class="cmf-t" style="color:#1a1a1a">Case Studies</div>
+                <div class="cmf-d">Submit and review case studies that apply concepts to real-world scenarios.</div>
+              </div>
+            </div>
           </div>
-          <div class="box">
-            <h3>McGraw Hill</h3>
-            <p>Publisher of the course textbook and digital learning resources used throughout the semester.</p>
+
+          <!-- MCGRAW HILL -->
+          <div class="cmb">
+            <div class="cmb-id">
+              <img class="cmb-logo-img" src="../assets/mcgraw-hill-logo-png.png" alt="McGraw Hill">
+              <p class="cmb-desc">Textbook &amp; learning resources to support your success.</p>
+            </div>
+            <div class="cmb-feats f3">
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#c8030c"><svg viewBox="0 0 24 24"><path d="M12 6v13M12 6C10.7 5.3 9.2 5 7.5 5 5.6 5 4 5.5 3 6.3v13c1-.7 2.6-1.3 4.5-1.3 1.7 0 3.2.4 4.5 1.1m0-13c1.3-.7 2.8-1 4.5-1 1.9 0 3.5.5 4.5 1.3v13c-1-.7-2.6-1.3-4.5-1.3-1.7 0-3.2.4-4.5 1.1"/></svg></div>
+                <div class="cmf-t" style="color:#c8030c">Digital Textbook</div>
+                <div class="cmf-d">Access your e-textbook online anytime, anywhere.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#c8030c"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></div>
+                <div class="cmf-t" style="color:#c8030c">Study &amp; Practice Tools</div>
+                <div class="cmf-d">Use built-in tools to highlight, take notes, search, and review key concepts.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#c8030c"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.6-1.4 4.9-3.5 6.2V17H8.5v-1.8C6.4 13.9 5 11.6 5 9a7 7 0 017-7z"/></svg></div>
+                <div class="cmf-t" style="color:#c8030c">Publisher Resources</div>
+                <div class="cmf-d">Explore additional resources such as animations, tutorials, and practice activities.</div>
+              </div>
+            </div>
           </div>
-          <div class="box">
-            <h3>Connect</h3>
-            <p>Online platform used for SmartBook assignments, chapter activities, quizzes, exams, and the electronic textbook.</p>
+
+          <!-- CONNECT -->
+          <div class="cmb">
+            <div class="cmb-id">
+              <img class="cmb-logo-img" src="../assets/connect.jpg" alt="Connect">
+              <div class="cmb-subdesc" style="color:#006838">Assignments &amp; Assessments</div>
+              <p class="cmb-desc">Complete activities and assessments in Connect.</p>
+            </div>
+            <div class="cmb-feats f6">
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#006838"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
+                <div class="cmf-t" style="color:#006838">SmartBook® Exercises</div>
+                <div class="cmf-d">Personalized reading that adapts to you and promotes mastery.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#006838"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg></div>
+                <div class="cmf-t" style="color:#006838">Practice Quizzes</div>
+                <div class="cmf-d">Check your understanding with auto-graded chapter practice quizzes.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#006838"><svg viewBox="0 0 24 24"><path d="M9 3h6v5.5L19 15a2 2 0 01-1.7 3H6.7A2 2 0 015 15l4-6.5V3"/></svg></div>
+                <div class="cmf-t" style="color:#006838">Lab Activities</div>
+                <div class="cmf-d">Complete interactive labs and activities to explore key concepts.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#006838"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+                <div class="cmf-t" style="color:#006838">Lab Quizzes</div>
+                <div class="cmf-d">Apply what you learned in the labs with auto-graded quizzes.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#006838"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h3M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm3 4h8"/></svg></div>
+                <div class="cmf-t" style="color:#006838">Module Exams</div>
+                <div class="cmf-d">Take unit exams (lecture &amp; lab) to assess your learning progress.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#006838"><svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6zM2 9v6m20-6v6M6 12v4a6 6 0 0012 0v-4"/></svg></div>
+                <div class="cmf-t" style="color:#006838">Final Exam</div>
+                <div class="cmf-d">Comprehensive exam covering all lecture and lab content.</div>
+              </div>
+            </div>
           </div>
+
+          <!-- OTHER COURSE TOOLS -->
+          <div class="cmb">
+            <div class="cmb-id">
+              <div style="width:40px;height:40px;border-radius:50%;background:#e07800;display:flex;align-items:center;justify-content:center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <div class="cmb-ident" style="color:#e07800">OTHER COURSE TOOLS</div>
+              <p class="cmb-desc">Additional tools and support available to you.</p>
+            </div>
+            <div class="cmb-feats f3">
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#e07800"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V6a1 1 0 011-1zm0 0l9 8 9-8"/></svg></div>
+                <div class="cmf-t" style="color:#e07800">Student Email Account</div>
+                <div class="cmf-d">Receives notifications from Blackboard and important college communications. Is your email on your phone? It should be!</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#e07800"><svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.07A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.89L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
+                <div class="cmf-t" style="color:#e07800">Microsoft Teams</div>
+                <div class="cmf-d">Live video conferencing and screen sharing — perfect for when you are stuck in an assignment or lab.</div>
+              </div>
+              <div class="cmf">
+                <div class="cmf-icon" style="background:#e07800"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+                <div class="cmf-t" style="color:#e07800">Phone a Friend</div>
+                <div class="cmf-d">Call me if you need help with a subject or course navigation. <strong>606-451-6993</strong></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.cm-bands -->
+
+        <!-- OPTIONAL TEXTBOOK -->
+        <div class="cm-textbook">
+          <div class="cmb-id" style="flex:0 0 200px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:#5b22a3;display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v13M12 6C10.7 5.3 9.2 5 7.5 5 5.6 5 4 5.5 3 6.3v13c1-.7 2.6-1.3 4.5-1.3 1.7 0 3.2.4 4.5 1.1m0-13c1.3-.7 2.8-1 4.5-1 1.9 0 3.5.5 4.5 1.3v13c-1-.7-2.6-1.3-4.5-1.3-1.7 0-3.2.4-4.5 1.1"/></svg>
+            </div>
+            <div class="cmb-ident" style="color:#5b22a3">OPTIONAL PRINTED TEXTBOOK</div>
+            <p class="cmb-desc">Hole's Human Anatomy &amp; Physiology<br>(2025 Release)</p>
+          </div>
+          <div class="cm-tbook-cells">
+            <div class="cm-tbook-cell">
+              <div class="tc-lbl">Authors</div>
+              <div class="tc-val">Charles Welsh and Cynthia Prentice-Craver</div>
+            </div>
+            <div class="cm-tbook-cell">
+              <div class="tc-lbl">Publisher</div>
+              <div class="tc-val">McGraw Hill</div>
+            </div>
+            <div class="cm-tbook-cell">
+              <div class="tc-lbl">ISBN</div>
+              <div class="tc-val">9781265531102</div>
+            </div>
+            <div class="cm-tbook-cell">
+              <div class="tc-lbl">Requirement</div>
+              <div class="tc-val" style="color:var(--muted)">Optional / Not required for the course.</div>
+            </div>
+          </div>
+        </div><!-- /.cm-textbook -->
+
+        <div class="note" style="margin-top:12px;">
+          <strong>Course Charge Model:</strong> Required electronic textbook and Connect access are provided through the KCTCS Course Charge Model and are included as part of course materials fees.
         </div>
-        <div class="note">
-          <strong>Course Charge Model:</strong> Required electronic textbook and Connect access are provided through the KCTCS Course Charge Model and are included as part of course materials.
-        </div>
-        <p><strong>Optional print textbook:</strong> Hole's Human Anatomy &amp; Physiology, 2025 Release, Charles Welsh and Cynthia Prentice-Craver, McGraw Hill, ISBN 9781265531102.</p>
+
       </section>
 
       <section class="section">
