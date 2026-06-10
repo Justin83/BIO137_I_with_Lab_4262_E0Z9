@@ -232,6 +232,23 @@
       cursor: not-allowed;
     }
 
+    .btn-close {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+      border-radius: var(--radius);
+      padding: 10px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background .15s, color .15s;
+      display: none;
+    }
+
+    .btn-close:hover { background: var(--navy); color: var(--white); }
+    .btn-close.visible { display: inline-block; }
+
     .form-status {
       font-size: 13.5px;
       padding: 10px 14px;
@@ -535,6 +552,7 @@
 
       <div class="submit-wrap">
         <button type="submit" class="btn-submit" id="submit-btn">Submit Anonymous Feedback</button>
+        <button type="button" class="btn-close" id="close-btn" onclick="window.close()">Close This Tab</button>
         <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
       </div>
     </form>
@@ -643,11 +661,11 @@
       const data = await res.json().catch(() => ({}));
 
       if (res.ok && data.ok) {
-        setStatus("success", "Thank you — your anonymous response has been recorded.");
+        setStatus("success", "Thank you — your anonymous response has been recorded. You may now close this tab.");
         submitBtn.textContent = "Response Submitted";
-        form.querySelectorAll("input, textarea, button").forEach((el) => {
-          el.disabled = true;
-        });
+        submitBtn.disabled = true;
+        form.querySelectorAll("input, textarea").forEach((el) => { el.disabled = true; });
+        document.getElementById("close-btn").classList.add("visible");
         loadResults();
         showResultsSection();
       } else {
