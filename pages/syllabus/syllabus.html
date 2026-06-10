@@ -41,14 +41,14 @@
     /* Header */
     .head {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: auto 1fr;
       gap: 20px;
       align-items: end;
       padding: 30px 30px 24px;
       border-bottom: 3px solid var(--blue);
     }
     .brandmark { display: flex; align-items: center; }
-    .scc-logo { height: 58px; width: auto; max-width: 100%; display: block; }
+    .scc-logo { height: 56px; width: auto; max-width: 100%; display: block; object-fit: contain; }
     .titleblock { text-align: right; }
     .titleblock h1 { margin: 0; color: var(--blue); font-size: 1.7rem; line-height: 1.1; }
     .titleblock .meta { color: var(--muted); font-weight: 700; font-size: .95rem; margin-top: 4px; }
@@ -79,6 +79,14 @@
     .contact .row { display: flex; gap: 8px; margin: 4px 0; font-size: .94rem; }
     .contact .row .k { color: var(--gold); font-weight: 900; flex: 0 0 16px; text-align: center; }
     .contact .row span { color: var(--ink); }
+    .contact .eyebrow { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 800; color: var(--gold); margin-bottom: 2px; }
+    .contact.lead {
+      background: #fff;
+      border-left: 6px solid var(--gold);
+      box-shadow: 0 10px 24px rgba(8, 49, 95, .08);
+      margin-bottom: 14px;
+    }
+    .contact.lead h3 { font-size: 1.3rem; margin-bottom: 12px; }
 
     /* Callouts */
     .callout {
@@ -212,14 +220,15 @@
       <!-- COURSE CONTACTS -->
       <section class="section">
         <h2>Course Contacts</h2>
-        <div class="grid2">
-          <div class="contact">
-            <h3>Instructor: Justin N. Howard</h3>
-            <div class="row"><span class="k">⌂</span><span>Somerset North Campus · Stoner Bldg · Rm 216</span></div>
-            <div class="row"><span class="k">◷</span><span>Online: Blackboard for course issues; Email for urgent issues; message anytime. MS Teams, phone, or in-person meetings are welcome and encouraged.</span></div>
-            <div class="row"><span class="k">✆</span><span>606-451-6993</span></div>
-            <div class="row"><span class="k">✉</span><span>justin.howard@kctcs.edu</span></div>
-          </div>
+        <div class="contact lead">
+          <span class="eyebrow">Your Instructor</span>
+          <h3>Justin N. Howard</h3>
+          <div class="row"><span class="k">⌂</span><span>Somerset North Campus · Stoner Bldg · Rm 216</span></div>
+          <div class="row"><span class="k">◷</span><span>Online: Blackboard for course issues; Email for urgent issues; message anytime. MS Teams, phone, or in-person meetings are welcome and encouraged.</span></div>
+          <div class="row"><span class="k">✆</span><span>606-451-6993</span></div>
+          <div class="row"><span class="k">✉</span><span>justin.howard@kctcs.edu</span></div>
+        </div>
+        <div class="cards3">
           <div class="contact">
             <h3>Associate Dean: April Kilgore, Ph.D.</h3>
             <div class="row"><span class="k">⌂</span><span>Somerset North Campus · Stoner Bldg · Rm 210<br>Laurel North Campus · Bldg 2 · Rm 107</span></div>

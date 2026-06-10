@@ -39,14 +39,14 @@
     /* Header (matches syllabus) */
     .head {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: auto 1fr;
       gap: 20px;
       align-items: end;
       padding: 30px 30px 24px;
       border-bottom: 3px solid var(--blue);
     }
     .brandmark { display: flex; align-items: center; }
-    .scc-logo { height: 58px; width: auto; max-width: 100%; display: block; }
+    .scc-logo { height: 56px; width: auto; max-width: 100%; display: block; object-fit: contain; }
     .titleblock { text-align: right; }
     .titleblock h1 { margin: 0; color: var(--blue); font-size: 1.6rem; line-height: 1.1; }
     .titleblock .meta { color: var(--muted); font-weight: 700; font-size: .95rem; margin-top: 4px; }
