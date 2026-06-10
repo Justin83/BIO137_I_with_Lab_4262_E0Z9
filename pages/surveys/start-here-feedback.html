@@ -669,49 +669,44 @@
   }
 
   async function loadResults() {
-    if (SUPABASE_URL === "PASTE_SUPABASE_PROJECT_URL_HERE") return;
+    if (SUBMIT_ENDPOINT === "PASTE_SUPABASE_EDGE_FUNCTION_URL_HERE") return;
 
-    const resultsBody   = document.getElementById("results-body");
-    const loadingEl     = document.getElementById("results-loading");
-    const countBadge    = document.getElementById("response-count-badge");
+    const resultsBody = document.getElementById("results-body");
+    const loadingEl   = document.getElementById("results-loading");
+    const countBadge  = document.getElementById("response-count-badge");
 
     loadingEl.textContent = "Loading results…";
+    loadingEl.style.display = "block";
     resultsBody.innerHTML = "";
 
     try {
-      const url = `${SUPABASE_URL}/rest/v1/survey_likert_aggregates?instance_key=eq.${encodeURIComponent(SURVEY_INSTANCE_KEY)}&select=*`;
-      const res = await fetch(url, {
-        headers: {
-          "apikey": SUPABASE_ANON_KEY,
-          "Authorization": "Bearer " + SUPABASE_ANON_KEY,
-          "Accept": "application/json",
-        },
-      });
+      const url = `${SUBMIT_ENDPOINT}?instance_key=${encodeURIComponent(SURVEY_INSTANCE_KEY)}`;
+      const res = await fetch(url);
 
       if (!res.ok) throw new Error("Failed to load results");
-      const rows = await res.json();
+      const data = await res.json();
+      const rows = data.rows || [];
 
-      if (!Array.isArray(rows) || rows.length === 0) {
+      if (rows.length === 0) {
         loadingEl.style.display = "none";
         resultsBody.innerHTML = '<p class="no-results-note">No results yet. Be the first to respond.</p>';
         countBadge.textContent = "0 responses";
         return;
       }
 
-      // Determine total
       const total = rows[0].total_responses || 0;
       countBadge.textContent = total === 1 ? "1 response" : `${total} responses`;
       loadingEl.style.display = "none";
 
-      // Build a map: question_key → { value → { count, pct } }
+      // Build map: question_key → { answer_value → { count, pct } }
       const byQuestion = {};
       for (const row of rows) {
         const qk = row.question_key;
-        if (!byQuestion[qk]) byQuestion[qk] = {};
-        byQuestion[qk][row.answer_value] = {
-          count: row.response_count || 0,
-          pct:   parseFloat(row.percent_of_responses) || 0,
-        };
+        if (!byQuestion[qk]) byQuestion[qk] = { question_text: row.question_text };
+        if (row.answer_value) {
+          const pct = total > 0 ? Math.round((row.response_count / total) * 100) : 0;
+          byQuestion[qk][row.answer_value] = { count: row.response_count || 0, pct };
+        }
       }
 
       const html = [];
@@ -724,23 +719,20 @@
 
         for (const { value, label, cls } of VALUE_DISPLAY) {
           const d   = data[value] || { count: 0, pct: 0 };
-          const pct = d.pct;
           html.push(`
   <div class="bar-row">
     <div class="bar-label">${escHtml(label)}</div>
     <div class="bar-track">
-      <div class="bar-fill ${cls}" style="width:${pct}%"></div>
+      <div class="bar-fill ${cls}" style="width:${d.pct}%"></div>
     </div>
-    <div class="bar-stat">${pct.toFixed(0)}% &nbsp;(${d.count})</div>
+    <div class="bar-stat">${d.pct}% &nbsp;(${d.count})</div>
   </div>`);
         }
 
         html.push(`</div><hr class="divider" />`);
       }
 
-      // Remove trailing divider
       if (html.length > 0) html.pop();
-
       resultsBody.innerHTML = html.join("");
     } catch {
       loadingEl.textContent = "Results are temporarily unavailable.";
@@ -757,7 +749,7 @@
 
   // Auto-load results on page load (shows after configuration is complete)
   window.addEventListener("load", () => {
-    if (SUPABASE_URL !== "PASTE_SUPABASE_PROJECT_URL_HERE") {
+    if (SUBMIT_ENDPOINT !== "PASTE_SUPABASE_EDGE_FUNCTION_URL_HERE") {
       showResultsSection();
       loadResults();
     }

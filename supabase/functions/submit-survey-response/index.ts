@@ -103,6 +103,59 @@ Deno.serve(async (req: Request) => {
     return new Response(null, { status: 204, headers: corsHeaders(origin) });
   }
 
+  // GET — return safe aggregate results
+  if (req.method === "GET") {
+    const url = new URL(req.url);
+    const instanceKey = url.searchParams.get("instance_key");
+
+    if (!instanceKey || !ALLOWED_INSTANCE_KEYS.includes(instanceKey)) {
+      return jsonError("Unknown survey instance.", 400, origin);
+    }
+
+    const dbUrl = Deno.env.get("SUPABASE_DB_URL");
+    if (!dbUrl) return jsonError("Server configuration error.", 500, origin);
+
+    const sql = postgres(dbUrl, { prepare: false });
+    try {
+      const rows = await sql`
+        SELECT
+          si.id                AS survey_instance_id,
+          si.instance_key,
+          sq.question_key,
+          sq.question_text,
+          sa.answer_value,
+          COUNT(sa.id)::int    AS response_count,
+          (
+            SELECT COUNT(DISTINCT ss2.id)::int
+            FROM course_survey.survey_submissions ss2
+            WHERE ss2.survey_instance_id = si.id
+          )                    AS total_responses
+        FROM course_survey.survey_instances si
+        JOIN course_survey.survey_questions sq
+          ON sq.survey_template_id = si.survey_template_id
+         AND sq.question_type = 'likert'
+        LEFT JOIN course_survey.survey_answers sa
+          ON sa.survey_instance_id = si.id
+         AND sa.question_key = sq.question_key
+         AND sa.answer_value IS NOT NULL
+        WHERE si.instance_key = ${instanceKey}
+          AND si.results_visible = true
+        GROUP BY si.id, si.instance_key, sq.question_key, sq.question_text, sa.answer_value
+        ORDER BY sq.display_order, sa.answer_value
+      `;
+
+      return new Response(JSON.stringify({ ok: true, rows }), {
+        status: 200,
+        headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
+      });
+    } catch (err) {
+      console.error("Results error:", err);
+      return jsonError("Results are temporarily unavailable.", 500, origin);
+    } finally {
+      await sql.end();
+    }
+  }
+
   if (req.method !== "POST") {
     return jsonError("Method not allowed", 405, origin);
   }
