@@ -4,35 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIO 137 Course Schedule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f;
-      --blue2: #0d4d8c;
-      --gold: #c69214;
-      --ink: #172033;
-      --muted: #5f6f86;
-      --line: #dbe5f1;
-      --paper: #ffffff;
-      --soft: #f5f8fc;
-      --red: #b42318;
-      --green: #137a39;
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb;
+      --red: #b42318; --green: #137a39;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: #e9f0f8;
+      background: #edf2f7;
       color: var(--ink);
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.55;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
     }
     .page { max-width: 1000px; margin: auto; padding: 24px; }
     .doc {
       background: var(--paper);
       border: 1px solid var(--line);
-      border-top: 10px solid var(--blue);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
-      border-radius: 4px;
+      box-shadow: 0 8px 24px rgba(8,49,95,.07);
+      border-radius: 8px;
       overflow: hidden;
     }
     .head {
@@ -51,8 +47,8 @@
 
     .intro { padding: 22px 30px; }
     .callout {
-      border-left: 6px solid var(--gold);
-      background: #fff8e5;
+      border-left: 6px solid var(--blue);
+      background: #f3f7fb;
       border-radius: 8px;
       padding: 14px 16px;
     }
@@ -72,7 +68,7 @@
       list-style: none;
       cursor: pointer;
       padding: 14px 18px;
-      background: linear-gradient(90deg, var(--blue), var(--blue2));
+      background: var(--blue);
       color: #fff;
       display: flex;
       align-items: center;

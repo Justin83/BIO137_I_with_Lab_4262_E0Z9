@@ -4,92 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIO 137 Review for Final &amp; Final Exams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f;
-      --blue2: #0d4d8c;
-      --gold: #c69214;
-      --ink: #172033;
-      --muted: #5f6f86;
-      --line: #dbe5f1;
-      --paper: #ffffff;
-      --soft: #f5f8fc;
-      --green: #137a39;
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #e9f0f8;
-      color: var(--ink);
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.58;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
     .page { max-width: 1000px; margin: auto; padding: 24px; }
-    .doc {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .banner { display: block; width: 100%; height: auto; }
-
-    .titlewrap { padding: 22px 30px 6px; }
-    .eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
-    .titlewrap h1 { margin: 6px 0 4px; color: var(--blue); font-size: 1.9rem; line-height: 1.1; }
-    .titlewrap .meta { color: var(--muted); font-weight: 700; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-    .chip { background: #eaf1fb; border: 1px solid var(--line); border-radius: 12px; padding: 9px 14px; }
-    .chip b { color: var(--blue); display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
-    .chip span { font-weight: 700; }
-
-    .section { padding: 22px 30px; border-top: 1px solid var(--line); }
-    h2 { color: var(--blue); font-size: 1.32rem; margin: 0 0 12px; padding-left: 12px; border-left: 5px solid var(--gold); }
-    p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
-
-    .why { border-left: 6px solid var(--gold); background: #fff8e5; border-radius: 8px; padding: 16px 18px; }
-    .dates { border-left: 6px solid var(--green); background: #effaf2; border-radius: 8px; padding: 16px 18px; }
-    .dates .lbl { display: block; color: var(--blue); font-weight: 900; margin-bottom: 6px; }
-    .dates ul { margin: 0; padding-left: 20px; }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+    .breadcrumb { font-size: .8rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--blue2); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .mod-hero { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .mod-hero-bar { width: 6px; background: var(--blue); flex-shrink: 0; }
+    .mod-hero-inner { padding: 20px 26px; flex: 1; }
+    .eyebrow { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .67rem; margin-bottom: 5px; }
+    .mod-hero-inner h1 { margin: 0 0 6px; color: var(--blue); font-size: 1.75rem; line-height: 1.15; font-weight: 700; }
+    .mod-hero-inner .meta { color: var(--muted); font-size: .85rem; font-weight: 600; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 5px 11px; display: flex; gap: 6px; align-items: center; }
+    .chip b { color: var(--blue); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; }
+    .chip span { font-weight: 600; font-size: .85rem; }
+    .section { padding: 20px 26px; border-top: 1px solid var(--line); }
+    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
+    p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
+    .why { border-left: 3px solid var(--blue); background: #f3f7fb; padding: 13px 16px; font-size: .92rem; line-height: 1.65; }
+    .dates { border-left: 3px solid var(--green); background: #effaf2; padding: 13px 16px; }
+    .dates .lbl { display: block; color: var(--blue); font-weight: 700; margin-bottom: 6px; font-size: .85rem; }
+    .dates ul { margin: 0; padding-left: 18px; font-size: .9rem; }
     .dates li { margin: 4px 0; }
-
-    .ecards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .ecard { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
-    .ecard h3 { margin: 0 0 4px; color: var(--blue); font-size: 1.05rem; }
-    .ecard .big { font-size: 1.6rem; font-weight: 900; color: var(--blue); }
-    .ecard .big small { font-size: .8rem; font-weight: 700; color: var(--muted); }
-    .ecard ul { margin: 8px 0 0; padding-left: 18px; font-size: .9rem; }
+    .ecards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .ecard { background: #fafcfe; border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
+    .ecard h3 { margin: 0 0 4px; color: var(--blue); font-size: .95rem; font-weight: 700; }
+    .ecard .big { font-size: 1.5rem; font-weight: 800; color: var(--blue); }
+    .ecard .big small { font-size: .78rem; font-weight: 600; color: var(--muted); }
+    .ecard ul { margin: 8px 0 0; padding-left: 16px; font-size: .85rem; }
     .ecard li { margin: 4px 0; }
-
-    .todo { list-style: none; margin: 8px 0 0; padding: 0; }
-    .todo li { display: flex; gap: 11px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .todo { list-style: none; margin: 10px 0 0; padding: 0; }
+    .todo li { display: flex; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
     .todo li:last-child { border-bottom: 0; }
-    .todo .ck { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 999px; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .todo .ck svg { width: 13px; height: 13px; }
-
-    .footer { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0; }
-
-    @media (max-width: 720px) {
-      .ecards { grid-template-columns: 1fr; }
-      .titlewrap h1 { font-size: 1.5rem; }
-    }
+    .todo .num { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; background: var(--blue); color: #fff; font-weight: 700; font-size: .72rem; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .todo span:not(.num) { font-size: .88rem; line-height: 1.5; }
+    .todo-note { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: .75rem; color: var(--muted); background: #edf2f7; border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; }
+    .footer { text-align: center; color: var(--muted); font-size: .85rem; margin: 18px 0; }
+    @media (max-width: 720px) { .ecards { grid-template-columns: 1fr; } .mod-hero-inner h1 { font-size: 1.4rem; } }
   </style>
 </head>
 <body>
   <div class="page">
+    <nav class="breadcrumb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <a href="../../index.html">BIO 137 Course Home</a>
+      <span>›</span>
+      <span>Review for Final &amp; Final Exams</span>
+    </nav>
     <main class="doc">
 
-      <img class="banner" src="../assets/Module%20Overview.png" alt="Module Overview — Somerset Community College">
-
-      <div class="titlewrap">
-        <div class="eyebrow">Final Module · BIO 137 Summer 2026</div>
-        <h1>Review for Final &amp; Final Exams</h1>
-        <div class="meta">Comprehensive review and final lecture &amp; lab exams · August 5–7</div>
-        <div class="chips">
-          <div class="chip"><b>Final Review Quizzes</b><span>20 points total</span></div>
-          <div class="chip"><b>Final Exam — Lecture</b><span>60 points</span></div>
-          <div class="chip"><b>Final Exam — Lab</b><span>40 points</span></div>
+      <div class="mod-hero">
+        <div class="mod-hero-bar"></div>
+        <div class="mod-hero-inner">
+          <div class="eyebrow">Final Module · BIO 137 Human A&amp;P I · Summer 2026</div>
+          <h1>Review for Final &amp; Final Exams</h1>
+          <div class="meta">Comprehensive review and final lecture &amp; lab exams · August 5–7</div>
+          <div class="chips">
+            <div class="chip"><b>Final Review Quizzes</b><span>20 points total</span></div>
+            <div class="chip"><b>Final Exam — Lecture</b><span>60 points</span></div>
+            <div class="chip"><b>Final Exam — Lab</b><span>40 points</span></div>
+          </div>
         </div>
       </div>
 
@@ -154,15 +140,19 @@
       </section>
 
       <section class="section">
-        <img class="banner" src="../assets/To-Do%20List.png" alt="To-Do List — Somerset Community College" style="border:1px solid var(--line); border-radius:8px;">
+        <h2>Final Module To-Do List</h2>
         <ul class="todo">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete all Final Review Quizzes (20 points total) to prepare for the comprehensive final.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete any optional bonus review assignments offered by your instructor.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Revisit chapters, SmartBook exercises, and lab activities for any topics that need more review.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Take the Final Exam — Lecture Portion (60 questions, 120 minutes).</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Take the Final Exam — Lab Portion (40 questions, 80 minutes).</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Submit both portions before the final exam window closes Friday, August 7 at 11:59 p.m. ET.</span></li>
+          <li><span class="num">1</span><span>Complete all Final Review Quizzes (20 points total) to prepare for the comprehensive final.</span></li>
+          <li><span class="num">2</span><span>Complete any optional bonus review assignments offered by your instructor.</span></li>
+          <li><span class="num">3</span><span>Revisit chapters, SmartBook exercises, and lab activities for any topics that need more review.</span></li>
+          <li><span class="num">4</span><span>Take the Final Exam — Lecture Portion (60 questions, 120 minutes).</span></li>
+          <li><span class="num">5</span><span>Take the Final Exam — Lab Portion (40 questions, 80 minutes).</span></li>
+          <li><span class="num">6</span><span>Submit both portions before the final exam window closes Friday, August 7 at 11:59 p.m. ET.</span></li>
         </ul>
+        <div class="todo-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Check off items in Blackboard — this is a reference copy.
+        </div>
       </section>
 
     </main>

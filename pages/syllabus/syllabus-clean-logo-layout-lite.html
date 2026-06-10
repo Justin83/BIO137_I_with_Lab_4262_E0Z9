@@ -4,30 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIO 137 Syllabus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f;
-      --gold: #c69214;
-      --ink: #172033;
-      --muted: #5f6f86;
-      --line: #d8e2ef;
-      --paper: #ffffff;
-      --soft: #f5f8fc;
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: #e9f0f8;
+      background: #edf2f7;
       color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
     }
     .page { max-width: 1080px; margin: auto; padding: 24px; }
     .doc {
       background: var(--paper);
       border: 1px solid var(--line);
-      border-top: 10px solid var(--blue);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
+      box-shadow: 0 8px 24px rgba(8,49,95,.07);
+      border-radius: 8px;
+      overflow: hidden;
     }
     .head {
       display: grid;
@@ -82,12 +83,12 @@
     }
     .box h3 { margin: 0 0 6px; color: var(--blue); }
     .note {
-      border-left: 6px solid var(--gold);
-      background: #fff8e5;
+      border-left: 6px solid var(--blue);
+      background: #f3f7fb;
       padding: 14px;
       margin: 12px 0;
     }
-    .note.success { border-left-color: #137a39; background: #effaf2; }
+    .note.success { border-left-color: var(--green); background: #effaf2; }
     table { width: 100%; border-collapse: collapse; }
     td, th { border: 1px solid var(--line); padding: 9px; text-align: left; vertical-align: top; }
     th { background: #eaf1fb; color: var(--blue); }

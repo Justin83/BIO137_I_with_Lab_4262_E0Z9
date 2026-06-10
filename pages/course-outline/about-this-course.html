@@ -4,35 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIO 137 About This Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f;
-      --blue2: #0d4d8c;
-      --gold: #c69214;
-      --ink: #172033;
-      --muted: #5f6f86;
-      --line: #dbe5f1;
-      --paper: #ffffff;
-      --soft: #f5f8fc;
-      --green: #137a39;
-      --purple: #7b3fb2;
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb;
+      --green: #137a39; --purple: #7b3fb2;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #e9f0f8; color: var(--ink); font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.58; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
     .page { max-width: 1000px; margin: auto; padding: 24px; }
-    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 16px 38px rgba(15, 23, 42, .08); border-radius: 6px; overflow: hidden; }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
     .banner { display: block; width: 100%; height: auto; }
     .titlewrap { padding: 22px 30px 6px; }
     .eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
     .titlewrap h1 { margin: 6px 0 4px; color: var(--blue); font-size: 1.9rem; line-height: 1.1; }
     .titlewrap .meta { color: var(--muted); font-weight: 700; }
     .section { padding: 22px 30px; border-top: 1px solid var(--line); }
-    h2 { color: var(--blue); font-size: 1.32rem; margin: 0 0 12px; padding-left: 12px; border-left: 5px solid var(--gold); }
+    h2 { color: var(--blue); font-size: 1.32rem; margin: 0 0 12px; padding-left: 12px; border-left: 5px solid var(--blue); }
     h3 { color: var(--blue); margin: 16px 0 8px; font-size: 1.05rem; }
     p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
     ul { margin: 8px 0 0 1.25rem; padding: 0; }
     li { margin: 7px 0; }
-    .callout { border-left: 6px solid var(--gold); background: #fff8e5; border-radius: 8px; padding: 16px 18px; }
+    .callout { border-left: 6px solid var(--blue); background: #f3f7fb; border-radius: 8px; padding: 16px 18px; }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .card { background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
     .card b { display: block; color: var(--blue); margin-bottom: 4px; }
@@ -53,8 +50,14 @@
 <body>
   <!-- source-sha256: SOyXF2rIZavZogCDY9rGM3DeUAeLerKFA7l61P+IMvg -->
   <div class="page"><main class="doc">
-    <img class="banner" src="../assets/yellow%20bottom%20border%20kctcs.png" alt="Somerset Community College banner">
-    <div class="titlewrap"><div class="eyebrow">Start Here · BIO 137 Summer 2026</div><h1>About This Course</h1><div class="meta">Course navigation, organization, textbook access, and online etiquette</div></div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--line);">
+      <div style="width:6px;background:var(--blue);flex-shrink:0;"></div>
+      <div style="padding:20px 26px;flex:1;">
+        <div style="color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.67rem;margin-bottom:5px;">Start Here · BIO 137 Summer 2026</div>
+        <h1 style="margin:0 0 6px;color:var(--blue);font-size:1.75rem;font-weight:700;line-height:1.15;">About This Course</h1>
+        <div style="color:var(--muted);font-size:.88rem;font-weight:600;">Course navigation, organization, textbook access, and online etiquette</div>
+      </div>
+    </div>
     <section class="section"><h2>Introduction</h2><p>Welcome to BIO 137 online lecture and lab/Human Anatomy &amp; Physiology! This course is the first semester in a two-semester sequence that covers the structures and function of the human body. This semester we will study basic chemistry, cell structure, cell function, tissues, and the integumentary, skeletal, muscular, and nervous systems.</p><p>In this section, you will learn how the course is organized, how to navigate the course, and how to contact your instructor. You will also learn about important course policies.</p><div class="callout"><p><strong>Why it matters:</strong> This section covers important information about the course that you can put to immediate use.</p><p><strong>How you’ll use this:</strong> You will use this information to navigate through the course, find work, and submit it.</p></div></section>
     <section class="section"><h2>Course Navigation Dashboard</h2><p>At the top of the page in Blackboard, you will see the dashboard. You can use this to go to the items it lists.</p><div class="grid"><div class="card"><b>Content</b>Find the content of the course, including materials, assignments, and resources.</div><div class="card"><b>Calendar</b>View course schedules, assignment due dates, and upcoming events.</div><div class="card"><b>Discussions</b>Participate in course-related conversations, share ideas, and engage with peers/instructors.</div><div class="card"><b>Gradebook</b>View your grades, track your performance, and access feedback for completed coursework.</div><div class="card"><b>Messages</b>Send messages to your instructor and other students. See the syllabus for preferred contact methods.</div><div class="card"><b>Groups</b>Access group tools if they are used for a course activity.</div></div><h3>Right-side menu</h3><div class="grid"><div class="card"><b>Class roster</b>View classmates and instructors to facilitate communication and collaboration.</div><div class="card"><b>Progress tracking</b>Monitor your completion status for course materials so you can stay organized and on track.</div><div class="card"><b>Class Collaborate</b>Access live, interactive virtual sessions if they are used in the course.</div><div class="card"><b>Attendance</b>View recorded attendance status for course sessions if utilized by the instructor.</div><div class="card"><b>Books &amp; Tools</b>Access resources and integrated tools that support the learning experience.</div></div></section>
     <section class="section"><h2>Course Organization</h2><p>This course begins with a <strong>Start Here</strong> section containing important course information and five introductory assignments. Next, there are <strong>four modules</strong> that constitute the majority of the course work, covering chapters 1–12 of the textbook and 12 laboratory topics. The course concludes with a section containing <strong>review material</strong> and <strong>final exams</strong>.</p><div class="flow"><div class="flowbox">Start Here</div><div class="flowarrow">↓</div><div class="flowbox">4 Modules</div><div class="flowarrow">↓</div><div class="flowbox">Review &amp; Final Exams</div></div></section>

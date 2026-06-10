@@ -4,90 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIO 137 Module 1 Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f;
-      --blue2: #0d4d8c;
-      --gold: #c69214;
-      --ink: #172033;
-      --muted: #5f6f86;
-      --line: #dbe5f1;
-      --paper: #ffffff;
-      --soft: #f5f8fc;
-      --green: #137a39;
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #e9f0f8;
-      color: var(--ink);
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.58;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
     .page { max-width: 1000px; margin: auto; padding: 24px; }
-    .doc {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .banner { display: block; width: 100%; height: auto; }
-
-    .titlewrap { padding: 22px 30px 6px; }
-    .eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
-    .titlewrap h1 { margin: 6px 0 4px; color: var(--blue); font-size: 1.9rem; line-height: 1.1; }
-    .titlewrap .meta { color: var(--muted); font-weight: 700; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-    .chip { background: #eaf1fb; border: 1px solid var(--line); border-radius: 12px; padding: 9px 14px; }
-    .chip b { color: var(--blue); display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
-    .chip span { font-weight: 700; }
-
-    .section { padding: 22px 30px; border-top: 1px solid var(--line); }
-    h2 { color: var(--blue); font-size: 1.32rem; margin: 0 0 12px; padding-left: 12px; border-left: 5px solid var(--gold); }
-    p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
-
-    .why {
-      border-left: 6px solid var(--gold);
-      background: #fff8e5;
-      border-radius: 8px;
-      padding: 16px 18px;
-    }
-
-    .objs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .obj { display: flex; gap: 12px; background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
-    .obj .n { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 10px; background: var(--blue); color: #fff; font-weight: 900; display: flex; align-items: center; justify-content: center; }
-    .obj p { margin: 0; align-self: center; font-weight: 600; }
-
-    .todo { list-style: none; margin: 8px 0 0; padding: 0; }
-    .todo li { display: flex; gap: 11px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+    .breadcrumb { font-size: .8rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--blue2); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .mod-hero { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .mod-hero-bar { width: 6px; background: var(--blue); flex-shrink: 0; }
+    .mod-hero-inner { padding: 20px 26px; flex: 1; display: flex; gap: 20px; align-items: flex-start; }
+    .mod-num { flex-shrink: 0; text-align: center; min-width: 52px; }
+    .mod-num .big { font-size: 3.2rem; font-weight: 800; color: var(--blue); line-height: 1; letter-spacing: -.04em; }
+    .mod-num .lbl { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #9aafcc; }
+    .mod-info { flex: 1; }
+    .eyebrow { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .67rem; margin-bottom: 5px; }
+    .mod-info h1 { margin: 0 0 6px; color: var(--blue); font-size: 1.75rem; line-height: 1.15; font-weight: 700; }
+    .mod-info .meta { color: var(--muted); font-size: .85rem; font-weight: 600; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 5px 11px; display: flex; gap: 6px; align-items: center; }
+    .chip b { color: var(--blue); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; }
+    .chip span { font-weight: 600; font-size: .85rem; }
+    .section { padding: 20px 26px; border-top: 1px solid var(--line); }
+    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
+    p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
+    .why { border-left: 3px solid var(--blue); background: #f3f7fb; padding: 13px 16px; font-size: .92rem; line-height: 1.65; }
+    .objs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .obj { display: flex; gap: 10px; background: #fafcfe; border: 1px solid var(--line); border-radius: 6px; padding: 12px; align-items: flex-start; }
+    .obj .n { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 6px; background: var(--blue); color: #fff; font-weight: 700; font-size: .82rem; display: flex; align-items: center; justify-content: center; }
+    .obj p { margin: 0; font-size: .88rem; font-weight: 500; line-height: 1.45; }
+    details summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: '▶'; font-size: .6rem; color: #9aafcc; transition: transform .15s; display: inline-block; }
+    details[open] summary::after { transform: rotate(90deg); }
+    details .det-body { margin-top: 10px; font-size: .9rem; }
+    .todo { list-style: none; margin: 10px 0 0; padding: 0; }
+    .todo li { display: flex; gap: 11px; padding: 9px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
     .todo li:last-child { border-bottom: 0; }
-    .todo .ck { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 999px; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .todo .ck svg { width: 13px; height: 13px; }
-
-    .footer { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0; }
-
-    @media (max-width: 720px) {
-      .objs { grid-template-columns: 1fr; }
-      .titlewrap h1 { font-size: 1.5rem; }
-    }
+    .todo .num { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; background: var(--blue); color: #fff; font-weight: 700; font-size: .72rem; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .todo span:not(.num) { font-size: .88rem; line-height: 1.5; }
+    .todo-note { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: .75rem; color: var(--muted); background: #edf2f7; border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; }
+    .footer { text-align: center; color: var(--muted); font-size: .85rem; margin: 18px 0; }
+    @media (max-width: 720px) { .objs { grid-template-columns: 1fr; } .mod-info h1 { font-size: 1.4rem; } .mod-num .big { font-size: 2.5rem; } .mod-hero-inner { gap: 14px; } }
   </style>
 </head>
 <body>
   <div class="page">
+    <nav class="breadcrumb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <a href="../../index.html">BIO 137 Course Home</a>
+      <span>›</span>
+      <span>Module 1 Overview</span>
+    </nav>
     <main class="doc">
 
-      <img class="banner" src="../assets/Module%20Overview.png" alt="Module Overview — Somerset Community College">
-
-      <div class="titlewrap">
-        <div class="eyebrow">Unit 1 · Module 1 · BIO 137 Summer 2026</div>
-        <h1>Introduction, Chemistry &amp; Cell Biology</h1>
-        <div class="meta">Chapters 1–3 · Three chapters, three labs, one case study, and Unit 1 exams</div>
-        <div class="chips">
-          <div class="chip"><b>Chapter 1</b><span>Introduction to Anatomy &amp; Physiology</span></div>
-          <div class="chip"><b>Chapter 2</b><span>Chemistry</span></div>
-          <div class="chip"><b>Chapter 3</b><span>Cell Biology</span></div>
+      <div class="mod-hero">
+        <div class="mod-hero-bar"></div>
+        <div class="mod-hero-inner">
+          <div class="mod-num">
+            <div class="big">01</div>
+            <div class="lbl">module</div>
+          </div>
+          <div class="mod-info">
+            <div class="eyebrow">Unit 1 · BIO 137 Human A&amp;P I · Summer 2026</div>
+            <h1>Introduction, Chemistry &amp; Cell Biology</h1>
+            <div class="meta">Chapters 1–3 · Three chapters, three labs, one case study, and Unit 1 exams</div>
+            <div class="chips">
+              <div class="chip"><b>Chapter 1</b><span>Introduction to Anatomy &amp; Physiology</span></div>
+              <div class="chip"><b>Chapter 2</b><span>Chemistry</span></div>
+              <div class="chip"><b>Chapter 3</b><span>Cell Biology</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -101,7 +97,7 @@
 
       <section class="section">
         <h2>Learning Objectives</h2>
-        <p>By the end of this module, you will be able to demonstrate competency in the following:</p>
+        <p style="font-size:.88rem; color:var(--muted); margin-bottom:10px;">By the end of this module, you will be able to demonstrate competency in the following:</p>
         <div class="objs">
           <div class="obj"><span class="n">1</span><p>Compare and contrast anatomy and physiology.</p></div>
           <div class="obj"><span class="n">2</span><p>Use correct terms to describe body organization, relative position, body regions, and directional relationships.</p></div>
@@ -111,23 +107,31 @@
       </section>
 
       <section class="section">
-        <h2>How to Navigate This Module</h2>
-        <p>Be sure to complete the assignments in the order listed! This module covers three chapters and three labs. Begin each chapter by reading through that chapter on your own using the digital e-text or, if you prefer, the optional hard copy you purchased. Once you are familiar with the chapter, you can complete the assignments more effectively.</p>
-        <p>Within each module, you will find an interactive reading assignment and quiz over each chapter, three lab exercises (some labs have two parts) and three lab quizzes, one Case Study assignment, one Lecture Exam, and one Lab Exam. Some modules also include videos to support your studies.</p>
+        <details open>
+          <summary>How to Navigate This Module</summary>
+          <div class="det-body">
+            <p>Be sure to complete the assignments in the order listed! This module covers three chapters and three labs. Begin each chapter by reading through that chapter on your own using the digital e-text or, if you prefer, the optional hard copy you purchased. Once you are familiar with the chapter, you can complete the assignments more effectively.</p>
+            <p>Within each module, you will find an interactive reading assignment and quiz over each chapter, three lab exercises (some labs have two parts) and three lab quizzes, one Case Study assignment, one Lecture Exam, and one Lab Exam. Some modules also include videos to support your studies.</p>
+          </div>
+        </details>
       </section>
 
       <section class="section">
-        <img class="banner" src="../assets/To-Do%20List.png" alt="To-Do List — Somerset Community College" style="border:1px solid var(--line); border-radius:8px;">
+        <h2>Module 1 To-Do List</h2>
         <ul class="todo">
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Read each chapter.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete the three interactive Chapter assignments for each chapter, working until you earn at least 80–90% or above.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete the Chapter Practice Quiz for each chapter, repeating up to three times if desired to improve your score and confidence.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete each of the three Lab Exercises (some have two parts).</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete each of the three Lab Quizzes, repeating up to three times if desired to improve your score and confidence.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Complete the Case Study assignment over material from all three chapters.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Take the Lecture Exam that covers material from all three chapters.</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span><span>Take the Lab Exam that covers material from all three labs.</span></li>
+          <li><span class="num">1</span><span>Read each chapter.</span></li>
+          <li><span class="num">2</span><span>Complete the three interactive Chapter assignments for each chapter, working until you earn at least 80–90% or above.</span></li>
+          <li><span class="num">3</span><span>Complete the Chapter Practice Quiz for each chapter, repeating up to three times if desired to improve your score and confidence.</span></li>
+          <li><span class="num">4</span><span>Complete each of the three Lab Exercises (some have two parts).</span></li>
+          <li><span class="num">5</span><span>Complete each of the three Lab Quizzes, repeating up to three times if desired to improve your score and confidence.</span></li>
+          <li><span class="num">6</span><span>Complete the Case Study assignment over material from all three chapters.</span></li>
+          <li><span class="num">7</span><span>Take the Lecture Exam that covers material from all three chapters.</span></li>
+          <li><span class="num">8</span><span>Take the Lab Exam that covers material from all three labs.</span></li>
         </ul>
+        <div class="todo-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Check off items in Blackboard — this is a reference copy.
+        </div>
       </section>
 
     </main>

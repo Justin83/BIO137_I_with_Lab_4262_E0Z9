@@ -4,137 +4,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BIO 137 Human Anatomy &amp; Physiology I — Course Pages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f;
-      --blue2: #0d4d8c;
-      --gold: #c69214;
-      --ink: #172033;
-      --muted: #5f6f86;
-      --line: #d8e2ef;
-      --paper: #ffffff;
-      --soft: #f5f8fc;
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #e9f0f8;
-      color: var(--ink);
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
     .page { max-width: 980px; margin: auto; padding: 24px; }
-    .doc {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-top: 10px solid var(--blue);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, .08);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .head { padding: 30px 30px 8px; }
-    .scc-logo { height: 56px; width: auto; max-width: 100%; display: block; object-fit: contain; margin-bottom: 16px; }
-    .kicker {
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--gold);
-      font-weight: 800;
-      font-size: .82rem;
-    }
-    h1 { font-size: 2.2rem; line-height: 1.05; margin: 8px 0; color: var(--blue); }
-    .meta { font-size: 1.02rem; color: var(--muted); font-weight: 700; }
-    .logos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 22px 30px 8px;
-    }
-    .logo {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fbfdff;
-      height: 95px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-    .logo img { max-width: 100%; max-height: 64px; }
-    .section { padding: 22px 30px; border-top: 1px solid var(--line); }
-    h2 { font-size: 1.3rem; color: var(--blue); margin: 0 0 14px; }
-    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-left: 6px solid var(--gold);
-      border-radius: 12px;
-      padding: 16px 18px;
-      transition: box-shadow .15s ease, transform .15s ease;
-    }
-    .card:hover { box-shadow: 0 10px 22px rgba(8, 49, 95, .12); transform: translateY(-2px); }
-    .card h3 { margin: 0 0 6px; color: var(--blue); font-size: 1.08rem; }
-    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-    .note {
-      border-left: 6px solid var(--blue);
-      background: #eef4fb;
-      padding: 14px 16px;
-      margin: 16px 0 0;
-      border-radius: 6px;
-      font-size: .95rem;
-    }
-    .footer { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0; }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+
+    /* Course identity header */
+    .course-header { background: var(--blue); }
+    .course-top { display: flex; align-items: stretch; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .logo-box { padding: 18px 22px; border-right: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05); display: flex; align-items: center; flex-shrink: 0; }
+    .logo-box img { height: 44px; display: block; width: auto; }
+    .title-block { padding: 18px 22px; flex: 1; }
+    .course-eyebrow { color: var(--gold); font-size: .67rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 4px; }
+    .course-title { color: #fff; font-size: 1.55rem; font-weight: 700; line-height: 1.2; }
+    .course-meta { color: rgba(255,255,255,.55); font-size: .84rem; font-weight: 600; margin-top: 3px; }
+
+    /* Instructor strip */
+    .instructor-strip { display: flex; align-items: center; gap: 14px; padding: 11px 22px; background: rgba(255,255,255,.06); }
+    .instructor-avatar { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.2); background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .instructor-avatar svg { width: 16px; height: 16px; stroke: rgba(255,255,255,.6); fill: none; }
+    .instructor-name { color: #fff; font-weight: 700; font-size: .9rem; }
+    .instructor-contact { color: rgba(255,255,255,.55); font-size: .78rem; }
+    .instructor-contact a { color: rgba(255,255,255,.75); text-decoration: none; }
+    .instructor-contact a:hover { color: #fff; text-decoration: underline; }
+    .contact-pref { margin-left: auto; font-size: .72rem; color: rgba(255,255,255,.4); background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; padding: 4px 10px; white-space: nowrap; }
+
+    /* Platform bar */
+    .platform-bar { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .platform-lbl { display: flex; align-items: center; padding: 9px 14px; color: var(--muted); font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; border-right: 1px solid var(--line); background: var(--soft); flex-shrink: 0; white-space: nowrap; }
+    .platforms { display: flex; flex: 1; }
+    .platform-item { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; flex: 1; border-right: 1px solid var(--line); }
+    .platform-item:last-child { border-right: none; }
+    .platform-item img { max-height: 36px; max-width: 120px; object-fit: contain; }
+
+    /* Nav section */
+    .nav-section { padding: 20px 22px 12px; }
+    .section-lbl { font-size: .63rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 12px; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card { display: block; text-decoration: none; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 6px; padding: 14px 16px; transition: box-shadow .12s, transform .12s; }
+    .card:hover { box-shadow: 0 4px 16px rgba(8,49,95,.1); transform: translateY(-1px); }
+    .card h3 { margin: 0 0 4px; color: var(--blue); font-size: .98rem; font-weight: 700; }
+    .card p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.4; }
+
+    /* Module grid */
+    .modules-section { padding: 0 22px 12px; }
+    .mod-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .mod-card { display: block; text-decoration: none; color: var(--ink); background: var(--soft); border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 6px; padding: 12px 10px; text-align: center; transition: box-shadow .12s, transform .12s; }
+    .mod-card:hover { box-shadow: 0 4px 14px rgba(8,49,95,.1); transform: translateY(-1px); }
+    .mod-card .num { font-size: 1.6rem; font-weight: 800; color: var(--blue); line-height: 1; letter-spacing: -.03em; }
+    .mod-card .lbl { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #9aafcc; margin-top: 1px; }
+    .mod-card .name { font-size: .75rem; font-weight: 600; color: var(--muted); margin-top: 6px; line-height: 1.3; }
+    .mod-card.final .num { font-size: 1rem; }
+
+    /* Footer bar */
+    .footer-bar { padding: 10px 22px; border-top: 1px solid var(--line); background: var(--soft); display: flex; align-items: center; justify-content: space-between; }
+    .footer-bar span { color: var(--muted); font-size: .78rem; }
+    .dev-link { color: var(--muted); font-size: .72rem; text-decoration: none; opacity: .55; }
+    .dev-link:hover { opacity: 1; text-decoration: underline; }
+
+    .footer { text-align: center; color: var(--muted); font-size: .85rem; margin: 16px 0; }
+
     @media (max-width: 760px) {
-      .logos, .cards { grid-template-columns: 1fr; }
-      h1 { font-size: 1.75rem; }
+      .cards { grid-template-columns: 1fr; }
+      .course-top { flex-direction: column; }
+      .platforms { flex-direction: column; }
+      .mod-cards { grid-template-columns: repeat(3, 1fr); }
+      .contact-pref { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <main class="doc">
-      <header class="head">
-        <img class="scc-logo" src="pages/assets/Somerset_horiz_RGB.png" alt="Somerset Community College">
-        <div class="kicker">Summer 2026</div>
-        <h1>BIO 137 Human Anatomy &amp; Physiology I</h1>
-        <div class="meta">4 Credit Hours · Online · Section E0Z9 · Class 2787 · SMC 4262 · June 15 – August 7</div>
-      </header>
 
-      <div class="logos">
-        <div class="logo"><img src="pages/assets/blackboard.jpg" alt="Blackboard"></div>
-        <div class="logo"><img src="pages/assets/mcgraw-hill-logo-png.png" alt="McGraw Hill"></div>
-        <div class="logo"><img src="pages/assets/connect.jpg" alt="Connect"></div>
+      <div class="course-header">
+        <div class="course-top">
+          <div class="logo-box">
+            <img src="pages/assets/Somerset_horiz_RGB.png" alt="Somerset Community College">
+          </div>
+          <div class="title-block">
+            <div class="course-eyebrow">Somerset Community College · Summer 2026</div>
+            <div class="course-title">BIO 137 Human Anatomy &amp; Physiology I</div>
+            <div class="course-meta">4 Credit Hours · Online · Section E0Z9 · Class 2787 · SMC 4262 · June 15 – August 7</div>
+          </div>
+        </div>
+        <div class="instructor-strip">
+          <div class="instructor-avatar">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div>
+            <div class="instructor-name">Justin N. Howard</div>
+            <div class="instructor-contact">
+              <a href="mailto:justin.howard@kctcs.edu">justin.howard@kctcs.edu</a> · 606-451-6993 · Somerset North Campus, Stoner Bldg, Rm 216
+            </div>
+          </div>
+          <div class="contact-pref">Email or Blackboard message preferred</div>
+        </div>
       </div>
 
-      <section class="section">
-        <h2>Course Pages</h2>
+      <div class="platform-bar">
+        <div class="platform-lbl">Course Platforms</div>
+        <div class="platforms">
+          <div class="platform-item"><img src="pages/assets/blackboard.jpg" alt="Blackboard"></div>
+          <div class="platform-item"><img src="pages/assets/mcgraw-hill-logo-png.png" alt="McGraw Hill"></div>
+          <div class="platform-item"><img src="pages/assets/connect.jpg" alt="Connect"></div>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="section-lbl">Course Pages</div>
         <div class="cards">
-          <a class="card" href="pages/syllabus/syllabus.html">
-            <h3>BIO 137 Visual Syllabus</h3>
-            <p>Full visual syllabus: tools, materials, contacts, exams, grading, and policies.</p>
-          </a>
           <a class="card" href="pages/syllabus/syllabus-clean-logo-layout-lite.html">
-            <h3>Syllabus (Logo Layout)</h3>
-            <p>Lightweight syllabus with the publisher logo strip — iframe-friendly.</p>
+            <h3>BIO 137 Visual Syllabus</h3>
+            <p>Course policies, grading, materials, contacts, and calendar overview.</p>
           </a>
           <a class="card" href="pages/course-outline/course-outline.html">
-            <h3>BIO 137 Course Outline</h3>
+            <h3>Course Outline &amp; Schedule</h3>
             <p>Master schedule of due dates, units, exams, and running point checkpoints.</p>
           </a>
-          <a class="card" href="pages/test/asset-test.html">
-            <h3>Asset / Path Test</h3>
-            <p>Diagnostic page confirming images and nested paths load from GitHub Pages.</p>
+          <a class="card" href="pages/course-outline/about-this-course.html">
+            <h3>About This Course</h3>
+            <p>Course navigation, organization, textbook access, and online etiquette.</p>
+          </a>
+          <a class="card" href="pages/course-outline/course-outline-daily.html">
+            <h3>Daily Schedule</h3>
+            <p>Day-by-day collapsible view of all assignments and deadlines.</p>
           </a>
         </div>
-        <div class="note">
-          <strong>Instructor:</strong> Justin N. Howard · Somerset North Campus, Stoner Bldg, Rm 216 ·
-          606-451-6993 · justin.howard@kctcs.edu. Email or Blackboard message anytime; MS Teams,
-          phone, or in-person meetings are welcome and encouraged.
+      </div>
+
+      <div class="modules-section">
+        <div class="section-lbl">Module Overviews</div>
+        <div class="mod-cards">
+          <a class="mod-card" href="pages/modules/module-1.html">
+            <div class="num">01</div>
+            <div class="lbl">module</div>
+            <div class="name">Intro, Chemistry &amp; Cell Biology</div>
+          </a>
+          <a class="mod-card" href="pages/modules/module-2.html">
+            <div class="num">02</div>
+            <div class="lbl">module</div>
+            <div class="name">Metabolism, Tissues &amp; Integumentary</div>
+          </a>
+          <a class="mod-card" href="pages/modules/module-3.html">
+            <div class="num">03</div>
+            <div class="lbl">module</div>
+            <div class="name">Skeletal &amp; Muscular Systems</div>
+          </a>
+          <a class="mod-card" href="pages/modules/module-4.html">
+            <div class="num">04</div>
+            <div class="lbl">module</div>
+            <div class="name">The Nervous System</div>
+          </a>
+          <a class="mod-card final" href="pages/modules/module-final.html">
+            <div class="num">Final</div>
+            <div class="lbl">module</div>
+            <div class="name">Review for Final &amp; Final Exams</div>
+          </a>
         </div>
-      </section>
+      </div>
+
+      <div class="footer-bar">
+        <span>BIO 137 · Summer 2026 · Somerset Community College</span>
+        <a href="pages/test/asset-test.html" class="dev-link">Asset test ↗</a>
+      </div>
+
     </main>
     <p class="footer">BIO 137 Human Anatomy &amp; Physiology I · Summer 2026 · Online · Section E0Z9</p>
   </div>
