@@ -393,15 +393,18 @@
       summary.textContent = `Class responses: ${total}`;
       summary.classList.add("visible");
 
-      // Build map: question_key → { answer_value → { count, pct } }
-      const byQ = {};
+      // Build map: question_key → { answer_value → count }
+      // Also track per-question answer totals as the denominator
+      // (more accurate than global total if any question had no answer)
+      const byQ    = {};
+      const qTotal = {};
       for (const row of rows) {
-        if (!byQ[row.question_key]) byQ[row.question_key] = {};
+        if (!byQ[row.question_key])    byQ[row.question_key]    = {};
+        if (!qTotal[row.question_key]) qTotal[row.question_key] = 0;
         if (row.answer_value) {
-          byQ[row.question_key][row.answer_value] = {
-            count: row.response_count || 0,
-            pct:   total > 0 ? Math.round((row.response_count / total) * 100) : 0,
-          };
+          const n = Number(row.response_count) || 0;
+          byQ[row.question_key][row.answer_value] = n;
+          qTotal[row.question_key] += n;
         }
       }
 
@@ -409,15 +412,31 @@
       for (const qk of LIKERT_KEYS) {
         const container = document.getElementById("inline-results-" + qk);
         if (!container) continue;
-        const qData = byQ[qk] || {};
-        const html  = VALUE_DISPLAY.map(({ value, label, cls }) => {
-          const d = qData[value] || { count: 0, pct: 0 };
+
+        const qData = byQ[qk]    || {};
+        const denom = qTotal[qk] || total || 1;
+
+        // Calculate raw percentages, then adjust largest to make sum exactly 100
+        const counts = VALUE_DISPLAY.map(({ value }) => Number(qData[value]) || 0);
+        const raws   = counts.map((c) => (c / denom) * 100);
+        const floored = raws.map(Math.floor);
+        const remainder = 100 - floored.reduce((a, b) => a + b, 0);
+        // Distribute leftover points to whichever values have the largest fractional parts
+        const fracs = raws.map((r, i) => ({ i, frac: r - Math.floor(r) }))
+                          .sort((a, b) => b.frac - a.frac);
+        for (let r = 0; r < remainder; r++) floored[fracs[r].i]++;
+        const pcts = floored;
+
+        const html = VALUE_DISPLAY.map(({ value, label, cls }, i) => {
+          const count = counts[i];
+          const pct   = pcts[i];
           return `<div class="bar-row">
   <div class="bar-label">${label}</div>
-  <div class="bar-track"><div class="bar-fill ${cls}" style="width:${d.pct}%"></div></div>
-  <div class="bar-stat">${d.pct}%&nbsp;(${d.count})</div>
+  <div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct}%"></div></div>
+  <div class="bar-stat">${pct}%&nbsp;(${count})</div>
 </div>`;
         }).join("");
+
         container.innerHTML = html;
         container.classList.add("visible");
       }
