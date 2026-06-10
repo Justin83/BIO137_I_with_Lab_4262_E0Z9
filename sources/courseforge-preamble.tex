@@ -1,0 +1,38 @@
+\usepackage[table]{xcolor}
+
+\usepackage[
+  letterpaper,
+  left=0.65in,
+  right=0.65in,
+  top=0.35in,
+  bottom=0.35in
+]{geometry}
+
+\usepackage{fontawesome5}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{changepage}
+\usepackage{float}
+\usepackage{placeins}
+
+\hypersetup{colorlinks=false,pdfborder={0 0 0}}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[sfdefault]{carlito}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Georgia}
+\fi
+
+% Look for graphics in /images first, then in the project root.
+\graphicspath{{images/}{./}}

@@ -1,0 +1,20 @@
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.2em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=0.2em,topsep=0.25em}
+
+\titleformat{\section}{\Large\bfseries\color{DeepBlue}}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{DeepBlue}}{}{0em}{}
+
+\titlespacing*{\section}{0pt}{1.1em}{0.35em}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.25em}
+
+% Fine adjustment for tight syllabus sections.
+\newcommand{\syllabusspacer}{0.1em}
+
+\usepackage{changepage}
+
+\newenvironment{subsectionbody}
+{\begin{adjustwidth}{0.18in}{0pt}}
+{\end{adjustwidth}}

@@ -1,0 +1,46 @@
+\tcbset{
+  contactcard/.style={
+    enhanced,
+    colback=white,
+    colframe=DeepBlue,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    valign=top,
+    before skip=0pt,
+    after skip=0pt
+  }
+}
+
+\newcommand{\contactcard}[6]{%
+\begin{tcolorbox}[contactcard]
+{\normalsize\bfseries\color{DeepBlue} #1}
+
+\vspace{0.45em}
+
+{\small
+{\footnotesize\faMapMarker*} \hspace{0.5em} #2\par
+
+\if\relax\detokenize{#3}\relax
+\else
+\vspace{0.25em}
+{\footnotesize\faMapMarker*} \hspace{0.5em} #3\par
+\fi
+
+\vspace{0.35em}
+
+{\footnotesize\faClock} \hspace{0.5em} #4\par
+
+\vspace{0.35em}
+
+{\footnotesize\faPhone} \hspace{0.5em} #5\par
+
+\vspace{0.35em}
+
+{\footnotesize\faEnvelope} \hspace{0.5em} \texttt{#6}
+}
+\end{tcolorbox}
+}
