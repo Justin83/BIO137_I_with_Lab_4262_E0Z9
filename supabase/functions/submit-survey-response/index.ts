@@ -1,6 +1,5 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import postgres from "https://deno.land/x/postgresjs@v3.4.4/mod.js";
 
-// Allowed CORS origins
 const ALLOWED_ORIGINS = [
   "https://justin83.github.io",
   "http://localhost",
@@ -36,7 +35,6 @@ const VALID_LIKERT_VALUES = new Set([
 
 const MAX_TEXT_LENGTH = 1000;
 
-// Simple bad-word / suspicious input patterns
 const SUSPICIOUS_PATTERNS = [
   /<script/i,
   /javascript:/i,
@@ -60,25 +58,18 @@ function corsHeaders(origin: string | null): Record<string, string> {
 function jsonError(msg: string, status: number, origin: string | null): Response {
   return new Response(
     JSON.stringify({ ok: false, error: msg }),
-    {
-      status,
-      headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
-    },
+    { status, headers: { ...corsHeaders(origin), "Content-Type": "application/json" } },
   );
 }
 
 function jsonOk(data: Record<string, unknown>, origin: string | null): Response {
   return new Response(
     JSON.stringify(data),
-    {
-      status: 200,
-      headers: { ...corsHeaders(origin), "Content-Type": "application/json" },
-    },
+    { status: 200, headers: { ...corsHeaders(origin), "Content-Type": "application/json" } },
   );
 }
 
 function getClientIp(req: Request): string {
-  // Supabase Edge Functions run on Deno / Cloudflare Workers-style infra
   return (
     req.headers.get("x-real-ip") ||
     req.headers.get("cf-connecting-ip") ||
@@ -96,8 +87,9 @@ async function hashRespondent(
   const raw = `${surveyInstanceId}:${ip}:${userAgent}:${salt}`;
   const encoded = new TextEncoder().encode(raw);
   const hashBuffer = await crypto.subtle.digest("SHA-256", encoded);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 function isSuspicious(text: string): boolean {
@@ -107,7 +99,6 @@ function isSuspicious(text: string): boolean {
 Deno.serve(async (req: Request) => {
   const origin = req.headers.get("origin");
 
-  // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders(origin) });
   }
@@ -116,7 +107,6 @@ Deno.serve(async (req: Request) => {
     return jsonError("Method not allowed", 405, origin);
   }
 
-  // Parse body
   let body: Record<string, unknown>;
   try {
     body = await req.json();
@@ -127,17 +117,14 @@ Deno.serve(async (req: Request) => {
   const instanceKey = body.instance_key;
   const answers = body.answers;
 
-  // Validate instance_key
   if (typeof instanceKey !== "string" || !ALLOWED_INSTANCE_KEYS.includes(instanceKey)) {
     return jsonError("Unknown survey instance.", 400, origin);
   }
 
-  // Validate answers array
   if (!Array.isArray(answers) || answers.length === 0) {
     return jsonError("Answers array is required.", 400, origin);
   }
 
-  // Validate each answer
   for (const ans of answers) {
     if (typeof ans !== "object" || ans === null) {
       return jsonError("Invalid answer format.", 400, origin);
@@ -165,7 +152,6 @@ Deno.serve(async (req: Request) => {
     }
   }
 
-  // Require all four Likert questions
   const submittedLikert = new Set(
     (answers as Array<Record<string, unknown>>)
       .filter((a) => LIKERT_QUESTION_KEYS.has(String(a.question_key)))
@@ -177,102 +163,85 @@ Deno.serve(async (req: Request) => {
     }
   }
 
-  // Build Supabase client with service role (bypasses RLS)
-  const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  const salt = Deno.env.get("SURVEY_HASH_SALT") || "default-salt-change-me";
+  const dbUrl = Deno.env.get("SUPABASE_DB_URL");
+  const salt  = Deno.env.get("SURVEY_HASH_SALT") || "default-salt-change-me";
 
-  if (!supabaseUrl || !serviceKey) {
-    console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
+  if (!dbUrl) {
+    console.error("Missing SUPABASE_DB_URL");
     return jsonError("Server configuration error.", 500, origin);
   }
 
-  const supabase = createClient(supabaseUrl, serviceKey, {
-    auth: { persistSession: false },
-  });
+  const sql = postgres(dbUrl, { prepare: false });
 
-  // Look up survey instance
-  const { data: instance, error: instanceErr } = await supabase
-    .schema("course_survey")
-    .from("survey_instances")
-    .select("id, is_active, opens_at, closes_at")
-    .eq("instance_key", instanceKey)
-    .single();
+  try {
+    // Look up survey instance directly in course_survey schema
+    const instances = await sql`
+      SELECT id, is_active, opens_at, closes_at
+      FROM course_survey.survey_instances
+      WHERE instance_key = ${instanceKey}
+      LIMIT 1
+    `;
 
-  if (instanceErr || !instance) {
-    return jsonError("Survey not found.", 404, origin);
+    if (instances.length === 0) {
+      return jsonError("Survey not found.", 404, origin);
+    }
+
+    const instance = instances[0];
+
+    if (!instance.is_active) {
+      return jsonError("This survey is not currently active.", 403, origin);
+    }
+
+    const now = new Date();
+    if (instance.opens_at && new Date(instance.opens_at) > now) {
+      return jsonError("This survey is not yet open.", 403, origin);
+    }
+    if (instance.closes_at && new Date(instance.closes_at) < now) {
+      return jsonError("This survey has closed.", 403, origin);
+    }
+
+    const ip = getClientIp(req);
+    const userAgent = req.headers.get("user-agent") || "";
+    const respondentHash = await hashRespondent(instance.id, ip, userAgent, salt);
+
+    // Upsert submission
+    const submissions = await sql`
+      INSERT INTO course_survey.survey_submissions (survey_instance_id, respondent_hash, updated_at)
+      VALUES (${instance.id}, ${respondentHash}, now())
+      ON CONFLICT (survey_instance_id, respondent_hash)
+      DO UPDATE SET updated_at = now()
+      RETURNING id
+    `;
+
+    const submissionId = submissions[0].id;
+
+    // Delete prior answers for this submission
+    await sql`
+      DELETE FROM course_survey.survey_answers
+      WHERE submission_id = ${submissionId}
+    `;
+
+    // Insert new answers
+    for (const ans of answers as Array<Record<string, unknown>>) {
+      const answerValue = typeof ans.answer_value === "string" ? ans.answer_value : null;
+      const answerText  = typeof ans.answer_text === "string" && (ans.answer_text as string).trim().length > 0
+        ? (ans.answer_text as string).trim()
+        : null;
+
+      await sql`
+        INSERT INTO course_survey.survey_answers
+          (submission_id, survey_instance_id, question_key, answer_value, answer_text)
+        VALUES
+          (${submissionId}, ${instance.id}, ${ans.question_key}, ${answerValue}, ${answerText})
+      `;
+    }
+
+    return jsonOk({ ok: true, message: "Response recorded anonymously." }, origin);
+
+  } catch (err) {
+    console.error("Database error:", err);
+    return jsonError("The survey could not be submitted right now. Please try again later.", 500, origin);
+  } finally {
+    await sql.end();
   }
-
-  if (!instance.is_active) {
-    return jsonError("This survey is not currently active.", 403, origin);
-  }
-
-  const now = new Date();
-  if (instance.opens_at && new Date(instance.opens_at) > now) {
-    return jsonError("This survey is not yet open.", 403, origin);
-  }
-  if (instance.closes_at && new Date(instance.closes_at) < now) {
-    return jsonError("This survey has closed.", 403, origin);
-  }
-
-  // Build respondent hash
-  const ip = getClientIp(req);
-  const userAgent = req.headers.get("user-agent") || "";
-  const respondentHash = await hashRespondent(instance.id, ip, userAgent, salt);
-
-  // Upsert submission (update if same respondent re-submits)
-  const { data: submission, error: subErr } = await supabase
-    .schema("course_survey")
-    .from("survey_submissions")
-    .upsert(
-      {
-        survey_instance_id: instance.id,
-        respondent_hash: respondentHash,
-        updated_at: new Date().toISOString(),
-      },
-      {
-        onConflict: "survey_instance_id,respondent_hash",
-        ignoreDuplicates: false,
-      },
-    )
-    .select("id")
-    .single();
-
-  if (subErr || !submission) {
-    console.error("Submission upsert error:", subErr);
-    return jsonError("Could not record your response.", 500, origin);
-  }
-
-  // Delete prior answers for this submission (clean update)
-  await supabase
-    .schema("course_survey")
-    .from("survey_answers")
-    .delete()
-    .eq("submission_id", submission.id);
-
-  // Insert new answers
-  const answerRows = (answers as Array<Record<string, unknown>>).map((a) => ({
-    submission_id: submission.id,
-    survey_instance_id: instance.id,
-    question_key: a.question_key,
-    answer_value: typeof a.answer_value === "string" ? a.answer_value : null,
-    answer_text: typeof a.answer_text === "string" && a.answer_text.trim().length > 0
-      ? a.answer_text.trim()
-      : null,
-  }));
-
-  const { error: ansErr } = await supabase
-    .schema("course_survey")
-    .from("survey_answers")
-    .insert(answerRows);
-
-  if (ansErr) {
-    console.error("Answer insert error:", ansErr);
-    return jsonError("Could not save your answers.", 500, origin);
-  }
-
-  return jsonOk(
-    { ok: true, message: "Response recorded anonymously." },
-    origin,
-  );
 });
