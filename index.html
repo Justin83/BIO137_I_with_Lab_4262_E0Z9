@@ -20,8 +20,9 @@
       margin: 0;
       background: #e9f0f8;
       color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
     .page { max-width: 980px; margin: auto; padding: 24px; }
     .doc {
@@ -33,6 +34,7 @@
       overflow: hidden;
     }
     .head { padding: 30px 30px 8px; }
+    .scc-logo { height: 56px; width: auto; max-width: 100%; display: block; margin-bottom: 16px; }
     .kicker {
       text-transform: uppercase;
       letter-spacing: .12em;
@@ -95,7 +97,8 @@
   <div class="page">
     <main class="doc">
       <header class="head">
-        <div class="kicker">Somerset Community College · Summer 2026</div>
+        <img class="scc-logo" src="pages/assets/Somerset_horiz_RGB.png" alt="Somerset Community College">
+        <div class="kicker">Summer 2026</div>
         <h1>BIO 137 Human Anatomy &amp; Physiology I</h1>
         <div class="meta">4 Credit Hours · Online · Section E0Z9 · Class 2787 · SMC 4262 · June 15 – August 7</div>
       </header>
