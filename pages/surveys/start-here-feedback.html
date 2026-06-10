@@ -552,7 +552,7 @@
 
       <div class="submit-wrap">
         <button type="submit" class="btn-submit" id="submit-btn">Submit Anonymous Feedback</button>
-        <button type="button" class="btn-close" id="close-btn" onclick="window.close()">Close This Tab</button>
+        <button type="button" class="btn-close" id="close-btn" onclick="window.close()">Close this page and return to Blackboard</button>
         <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
       </div>
     </form>
@@ -661,9 +661,8 @@
       const data = await res.json().catch(() => ({}));
 
       if (res.ok && data.ok) {
-        setStatus("success", "Thank you — your anonymous response has been recorded. You may now close this tab.");
-        submitBtn.textContent = "Response Submitted";
-        submitBtn.disabled = true;
+        setStatus("success", "Thank you — your anonymous response has been recorded.");
+        submitBtn.style.display = "none";
         form.querySelectorAll("input, textarea").forEach((el) => { el.disabled = true; });
         document.getElementById("close-btn").classList.add("visible");
         loadResults();
