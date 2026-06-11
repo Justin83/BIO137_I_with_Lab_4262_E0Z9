@@ -1,221 +1,241 @@
-<div style="max-width: 980px; margin: 0 auto; font-family: 'Inter', system-ui, Arial, sans-serif; color: #1a2d45; line-height: 1.62;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIO 137 Instructor &amp; Grading Information</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 1000px; margin: auto; padding: 24px; }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+    .breadcrumb { font-size: .8rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--blue2); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .mod-hero { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .mod-hero-bar { width: 6px; background: var(--blue); flex-shrink: 0; }
+    .mod-hero-inner { padding: 20px 26px; flex: 1; }
+    .eyebrow { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .67rem; margin-bottom: 5px; }
+    .mod-hero-inner h1 { margin: 0 0 6px; color: var(--blue); font-size: 1.75rem; line-height: 1.15; font-weight: 700; }
+    .mod-hero-inner .meta { color: var(--muted); font-size: .85rem; font-weight: 600; }
+    .section { padding: 20px 26px; border-top: 1px solid var(--line); }
+    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
+    h3 { color: var(--blue); font-size: 1.02rem; font-weight: 700; margin: 18px 0 7px; }
+    p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
+    ul { margin: 8px 0 10px 1.2rem; padding: 0; }
+    li { margin: 6px 0; }
+    a { color: var(--blue2); }
+    .contact { width: 100%; border-collapse: collapse; margin: 4px 0 0; }
+    .contact th { width: 26%; text-align: left; padding: 10px 12px; border: 1px solid var(--line); background: var(--soft); color: var(--blue); font-weight: 700; font-size: .9rem; vertical-align: top; }
+    .contact td { padding: 10px 12px; border: 1px solid var(--line); font-size: .92rem; }
+    .contact a { font-weight: 700; }
+    .callout { border-left: 4px solid var(--blue); background: #f3f7fb; border-radius: 6px; padding: 13px 16px; margin-top: 14px; }
+    .grades { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+    .grades li { display: flex; gap: 12px; align-items: baseline; background: var(--soft); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 6px; padding: 9px 13px; margin: 0; font-size: .92rem; }
+    .grades .g { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 5px; background: var(--blue); color: #fff; font-weight: 800; font-size: .82rem; display: inline-flex; align-items: center; justify-content: center; align-self: center; }
+    .footer { text-align: center; color: var(--muted); font-size: .85rem; margin: 18px 0; }
+    @media (max-width: 720px) { .mod-hero-inner h1 { font-size: 1.4rem; } .contact th { width: 38%; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="breadcrumb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <a href="../../index.html">BIO 137 Course Home</a>
+      <span>›</span>
+      <span>Meet the Instructor</span>
+    </nav>
+    <main class="doc">
 
-  <h1 style="margin: 0 0 8px; font-size: 2rem; color: #111827; font-weight: 700;">
-    Instructor and Grading Information
-  </h1>
+      <div class="mod-hero">
+        <div class="mod-hero-bar"></div>
+        <div class="mod-hero-inner">
+          <div class="eyebrow">Start Here · BIO 137 Human A&amp;P I · Summer 2026</div>
+          <h1>Instructor and Grading Information</h1>
+          <div class="meta">Meet your instructor, contact information, and grading policies</div>
+        </div>
+      </div>
 
-  <div style="height: 3px; background: #7a2c91; margin: 0 0 30px;"></div>
+      <section class="section">
+        <h2>Meet Your Instructor</h2>
+        <p>
+          Welcome to <strong>BIO 137 Human Anatomy and Physiology I</strong>. My name is <strong>Justin Howard</strong>, and I will be your instructor for this course.
+          This is an online, accelerated summer course, so the pace will be steady. My goal is to help you stay organized,
+          understand the material, and know how to get help before small problems become big ones.
+        </p>
+        <p>
+          Anatomy and physiology can feel like a new language at first. That is normal. You will be learning body regions,
+          directional terms, chemistry, cell structure, tissues, and organ systems. The students who do best usually work
+          consistently, read before attempting assignments, use the practice opportunities, and contact me early when they
+          have questions.
+        </p>
+      </section>
 
-  <h2 style="margin: 0 0 10px; font-size: 1.6rem; color: #08315f;">
-    Meet Your Instructor
-  </h2>
+      <section class="section">
+        <h2>Instructor Contact Information</h2>
+        <table class="contact">
+          <tbody>
+            <tr>
+              <th scope="row">Instructor</th>
+              <td>Justin N. Howard</td>
+            </tr>
+            <tr>
+              <th scope="row">Office</th>
+              <td>Somerset North Campus, Stoner Building, Room 216</td>
+            </tr>
+            <tr>
+              <th scope="row">Phone</th>
+              <td><a href="tel:16064516993">606-451-6993</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td><a href="mailto:justin.howard@kctcs.edu">justin.howard@kctcs.edu</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Course</th>
+              <td>BIO 137 Human Anatomy and Physiology I with Lab, Online, Summer 2026</td>
+            </tr>
+          </tbody>
+        </table>
 
-  <p>
-    Welcome to <strong>BIO 137 Human Anatomy and Physiology I</strong>. My name is <strong>Justin Howard</strong>, and I will be your instructor for this course.
-    This is an online, accelerated summer course, so the pace will be steady. My goal is to help you stay organized,
-    understand the material, and know how to get help before small problems become big ones.
-  </p>
+        <h3>Best Way to Reach Me</h3>
+        <p>
+          The best way to contact me for most course questions is through <strong>Blackboard Messages</strong> or KCTCS email.
+          Use Blackboard Messages when your question is connected to the course, an assignment, a grade, or course navigation.
+          Email is also fine, especially if you are having trouble accessing Blackboard.
+        </p>
+        <p>
+          You should generally receive a response from me within <strong>48 hours</strong>, not counting weekends, holidays,
+          or college closures. If you do not hear back within that time, please send your message again.
+        </p>
+        <p>
+          If your question is urgent or would be easier to talk through, you may also call my office phone at
+          <strong><a href="tel:16064516993">606-451-6993</a></strong>.
+          I am also available through <strong>Microsoft Teams</strong> when a live conversation or screen sharing would be helpful.
+        </p>
+        <p class="callout">
+          <strong>Need live help?</strong> Message me in Blackboard or email me to request a phone call or Microsoft Teams meeting.
+          Teams is especially helpful when you are stuck in Blackboard, Connect, an assignment, or a lab and need us to look at the
+          same screen together.
+        </p>
+      </section>
 
-  <p>
-    Anatomy and physiology can feel like a new language at first. That is normal. You will be learning body regions,
-    directional terms, chemistry, cell structure, tissues, and organ systems. The students who do best usually work
-    consistently, read before attempting assignments, use the practice opportunities, and contact me early when they
-    have questions.
-  </p>
+      <section class="section">
+        <h2>My Role as Your Instructor</h2>
+        <p>
+          My role is to provide guidance, structure, feedback, and support as you work through the course. I will help clarify
+          expectations, explain difficult concepts, answer questions, and help you make a plan when you are struggling.
+        </p>
+        <p>
+          I cannot complete the work for you, but I can help you understand what the work is asking, how to approach the material,
+          and how to use the tools available in Blackboard and Connect.
+        </p>
 
-  <h2 style="margin: 32px 0 10px; font-size: 1.6rem; color: #08315f;">
-    Instructor Contact Information
-  </h2>
+        <h3>Technical Support</h3>
+        <p>
+          I can help with basic course navigation and assignment expectations. For technical problems beyond my control, such as
+          password issues, Blackboard access errors, browser problems, Connect access issues, or system errors, I may direct you
+          to KCTCS, Blackboard, or McGraw Hill technical support.
+        </p>
+      </section>
 
-  <table style="width: 100%; border-collapse: collapse; margin: 12px 0 20px;">
-    <tbody>
-      <tr>
-        <td style="width: 28%; padding: 10px; border: 1px solid #c5d3e0; background: #eef4fb; font-weight: 700;">Instructor</td>
-        <td style="padding: 10px; border: 1px solid #c5d3e0;">Justin N. Howard</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border: 1px solid #c5d3e0; background: #eef4fb; font-weight: 700;">Office</td>
-        <td style="padding: 10px; border: 1px solid #c5d3e0;">Somerset North Campus, Stoner Building, Room 216</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border: 1px solid #c5d3e0; background: #eef4fb; font-weight: 700;">Phone</td>
-        <td style="padding: 10px; border: 1px solid #c5d3e0;">
-          <a href="tel:16064516993" style="color: #08315f; font-weight: 700; text-decoration: underline;">606-451-6993</a>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border: 1px solid #c5d3e0; background: #eef4fb; font-weight: 700;">Email</td>
-        <td style="padding: 10px; border: 1px solid #c5d3e0;">
-          <a href="mailto:justin.howard@kctcs.edu" style="color: #08315f; font-weight: 700; text-decoration: underline;">justin.howard@kctcs.edu</a>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border: 1px solid #c5d3e0; background: #eef4fb; font-weight: 700;">Course</td>
-        <td style="padding: 10px; border: 1px solid #c5d3e0;">BIO 137 Human Anatomy and Physiology I with Lab, Online, Summer 2026</td>
-      </tr>
-    </tbody>
-  </table>
+      <section class="section">
+        <h2>Grading and Feedback Policy</h2>
 
-  <h3 style="margin: 24px 0 8px; font-size: 1.25rem; color: #111827;">
-    Best Way to Reach Me
-  </h3>
+        <h3>Grading Response Time</h3>
+        <p>
+          Many assignments in this course are graded automatically and will show scores quickly. Assignments that require instructor
+          review will usually receive feedback within <strong>one week after the due date</strong>, unless there are extenuating
+          circumstances or a large number of submissions to review.
+        </p>
+        <p>
+          If something appears to be missing or ungraded after a reasonable amount of time, please contact me so I can check it.
+        </p>
 
-  <p>
-    The best way to contact me for most course questions is through <strong>Blackboard Messages</strong> or KCTCS email.
-    Use Blackboard Messages when your question is connected to the course, an assignment, a grade, or course navigation.
-    Email is also fine, especially if you are having trouble accessing Blackboard.
-  </p>
+        <h3>Finding Grades in Blackboard Ultra</h3>
+        <p>
+          In Blackboard Ultra, use the gradebook or Grades area to review submitted work and posted grades. You should check your
+          grades regularly, especially after major course deadlines.
+        </p>
+        <p>
+          Do not rely only on the percentage shown in Blackboard. To understand your standing in the course, divide the points you
+          have earned by the number of points possible at that point in the semester.
+        </p>
 
-  <p>
-    You should generally receive a response from me within <strong>48 hours</strong>, not counting weekends, holidays,
-    or college closures. If you do not hear back within that time, please send your message again.
-  </p>
+        <h3>Grading Criteria</h3>
+        <p>
+          This course uses a total-points grading system. A total of <strong>1405 points</strong> can be earned through the assignments,
+          quizzes, labs, exams, and final exam described in the course syllabus and schedule.
+        </p>
+        <ul class="grades">
+          <li><span class="g">A</span><span><strong>1258 or more points</strong> — equivalent to <strong>89.5% or above</strong>.</span></li>
+          <li><span class="g">B</span><span><strong>1117 to 1257 points</strong> — equivalent to <strong>79.5 to 89.4%</strong>.</span></li>
+          <li><span class="g">C</span><span><strong>977 to 1116 points</strong> — equivalent to <strong>69.5 to 79.4%</strong>.</span></li>
+          <li><span class="g">D</span><span><strong>836 to 976 points</strong> — equivalent to <strong>59.5 to 69.4%</strong>.</span></li>
+          <li><span class="g">E</span><span><strong>835 or fewer points</strong> — equivalent to <strong>below 59.5%</strong>.</span></li>
+        </ul>
 
-  <p>
-    If your question is urgent or would be easier to talk through, you may also call my office phone at
-    <strong><a href="tel:16064516993" style="color: #08315f; text-decoration: underline;">606-451-6993</a></strong>.
-    I am also available through <strong>Microsoft Teams</strong> when a live conversation or screen sharing would be helpful.
-  </p>
+        <h3>Determining Your Grade During the Semester</h3>
+        <p>
+          After each major deadline, evaluate your progress by dividing the total points you have earned by the total number of
+          points possible at that point. This gives you a more accurate picture of your course standing than the Blackboard percentage
+          alone.
+        </p>
+        <p>
+          A detailed list of assignments, point values, topics, and due dates can be found in the course schedule and assignment list.
+          Contact me if you are unsure how to interpret your grade.
+        </p>
+      </section>
 
-  <p style="margin: 16px 0 0; padding: 12px 14px; border-left: 4px solid #08315f; background: #f3f7fb;">
-    <strong>Need live help?</strong> Message me in Blackboard or email me to request a phone call or Microsoft Teams meeting.
-    Teams is especially helpful when you are stuck in Blackboard, Connect, an assignment, or a lab and need us to look at the
-    same screen together.
-  </p>
+      <section class="section">
+        <h2>Learner Participation and Expectations</h2>
+        <p>
+          This is an online, accelerated 8-week course. You are expected to log in often, read announcements, check Blackboard Messages
+          and KCTCS email, and complete work by the posted deadlines. Course access and assignment submissions are tracked in Blackboard
+          and Connect.
+        </p>
+        <p>
+          Attendance in this online course is based on completion of assigned work. Simply opening Blackboard does not replace completing
+          assignments, quizzes, labs, or exams. The Start Here assignments are especially important because they are used as evidence of
+          attendance during the first week of the course.
+        </p>
+        <p>
+          Most weeks include reading, SmartBook or interactive assignments, chapter practice quizzes, lab exercises, lab quizzes,
+          and occasional case study work. Exam weeks may also include regular weekly assignments.
+        </p>
+      </section>
 
-  <h2 style="margin: 36px 0 10px; font-size: 1.6rem; color: #08315f;">
-    My Role as Your Instructor
-  </h2>
+      <section class="section">
+        <h2>Learner Feedback</h2>
+        <p>
+          At the end of modules or at selected points in the course, you may have opportunities to provide feedback about the course.
+          Blackboard or the college may also prompt you to complete a course survey. Your feedback helps me identify what is working,
+          what needs clarification, and where students may need additional support.
+        </p>
+      </section>
 
-  <p>
-    My role is to provide guidance, structure, feedback, and support as you work through the course. I will help clarify
-    expectations, explain difficult concepts, answer questions, and help you make a plan when you are struggling.
-  </p>
+      <section class="section">
+        <h2>Other Class Policies</h2>
+        <p>
+          For all other class policies, including late work, make-up exams, withdrawal, academic integrity, accessibility services,
+          technical support, and college policies, please see the course syllabus.
+        </p>
+        <p class="callout">
+          <strong>Next step:</strong> Continue through the Start Here module and complete the required orientation assignments before
+          beginning the main course work.
+        </p>
+      </section>
 
-  <p>
-    I cannot complete the work for you, but I can help you understand what the work is asking, how to approach the material,
-    and how to use the tools available in Blackboard and Connect.
-  </p>
-
-  <h3 style="margin: 24px 0 8px; font-size: 1.25rem; color: #111827;">
-    Technical Support
-  </h3>
-
-  <p>
-    I can help with basic course navigation and assignment expectations. For technical problems beyond my control, such as
-    password issues, Blackboard access errors, browser problems, Connect access issues, or system errors, I may direct you
-    to KCTCS, Blackboard, or McGraw Hill technical support.
-  </p>
-
-  <div style="height: 1px; background: #d8e2ef; margin: 36px 0;"></div>
-
-  <h2 style="margin: 0 0 10px; font-size: 1.6rem; color: #08315f;">
-    Grading and Feedback Policy
-  </h2>
-
-  <h3 style="margin: 24px 0 8px; font-size: 1.25rem; color: #111827;">
-    Grading Response Time
-  </h3>
-
-  <p>
-    Many assignments in this course are graded automatically and will show scores quickly. Assignments that require instructor
-    review will usually receive feedback within <strong>one week after the due date</strong>, unless there are extenuating
-    circumstances or a large number of submissions to review.
-  </p>
-
-  <p>
-    If something appears to be missing or ungraded after a reasonable amount of time, please contact me so I can check it.
-  </p>
-
-  <h3 style="margin: 24px 0 8px; font-size: 1.25rem; color: #111827;">
-    Finding Grades in Blackboard Ultra
-  </h3>
-
-  <p>
-    In Blackboard Ultra, use the gradebook or Grades area to review submitted work and posted grades. You should check your
-    grades regularly, especially after major course deadlines.
-  </p>
-
-  <p>
-    Do not rely only on the percentage shown in Blackboard. To understand your standing in the course, divide the points you
-    have earned by the number of points possible at that point in the semester.
-  </p>
-
-  <h3 style="margin: 24px 0 8px; font-size: 1.25rem; color: #111827;">
-    Grading Criteria
-  </h3>
-
-  <p>
-    This course uses a total-points grading system. A total of <strong>1405 points</strong> can be earned through the assignments,
-    quizzes, labs, exams, and final exam described in the course syllabus and schedule.
-  </p>
-
-  <ul style="margin: 10px 0 18px; padding-left: 24px;">
-    <li style="margin-bottom: 6px;">To earn an <strong>A</strong>, students must have <strong>1258 or more points</strong>. This is equivalent to <strong>89.5% or above</strong>.</li>
-    <li style="margin-bottom: 6px;">To earn a <strong>B</strong>, students must have <strong>1117 to 1257 points</strong>. This is equivalent to <strong>79.5 to 89.4%</strong>.</li>
-    <li style="margin-bottom: 6px;">To earn a <strong>C</strong>, students must have <strong>977 to 1116 points</strong>. This is equivalent to <strong>69.5 to 79.4%</strong>.</li>
-    <li style="margin-bottom: 6px;">To earn a <strong>D</strong>, students must have <strong>836 to 976 points</strong>. This is equivalent to <strong>59.5 to 69.4%</strong>.</li>
-    <li style="margin-bottom: 6px;">To earn an <strong>E</strong>, students must earn <strong>835 or fewer points</strong>. This is equivalent to <strong>below 59.5%</strong>.</li>
-  </ul>
-
-  <h3 style="margin: 24px 0 8px; font-size: 1.25rem; color: #111827;">
-    Determining Your Grade During the Semester
-  </h3>
-
-  <p>
-    After each major deadline, evaluate your progress by dividing the total points you have earned by the total number of
-    points possible at that point. This gives you a more accurate picture of your course standing than the Blackboard percentage
-    alone.
-  </p>
-
-  <p>
-    A detailed list of assignments, point values, topics, and due dates can be found in the course schedule and assignment list.
-    Contact me if you are unsure how to interpret your grade.
-  </p>
-
-  <h2 style="margin: 36px 0 10px; font-size: 1.6rem; color: #08315f;">
-    Learner Participation and Expectations
-  </h2>
-
-  <p>
-    This is an online, accelerated 8-week course. You are expected to log in often, read announcements, check Blackboard Messages
-    and KCTCS email, and complete work by the posted deadlines. Course access and assignment submissions are tracked in Blackboard
-    and Connect.
-  </p>
-
-  <p>
-    Attendance in this online course is based on completion of assigned work. Simply opening Blackboard does not replace completing
-    assignments, quizzes, labs, or exams. The Start Here assignments are especially important because they are used as evidence of
-    attendance during the first week of the course.
-  </p>
-
-  <p>
-    Most weeks include reading, SmartBook or interactive assignments, chapter practice quizzes, lab exercises, lab quizzes,
-    and occasional case study work. Exam weeks may also include regular weekly assignments.
-  </p>
-
-  <h2 style="margin: 36px 0 10px; font-size: 1.6rem; color: #08315f;">
-    Learner Feedback
-  </h2>
-
-  <p>
-    At the end of modules or at selected points in the course, you may have opportunities to provide feedback about the course.
-    Blackboard or the college may also prompt you to complete a course survey. Your feedback helps me identify what is working,
-    what needs clarification, and where students may need additional support.
-  </p>
-
-  <h2 style="margin: 36px 0 10px; font-size: 1.6rem; color: #08315f;">
-    Other Class Policies
-  </h2>
-
-  <p>
-    For all other class policies, including late work, make-up exams, withdrawal, academic integrity, accessibility services,
-    technical support, and college policies, please see the course syllabus.
-  </p>
-
-  <p style="margin: 28px 0 0; padding: 14px 16px; border-left: 4px solid #08315f; background: #f3f7fb;">
-    <strong>Next step:</strong> Continue through the Start Here module and complete the required orientation assignments before
-    beginning the main course work.
-  </p>
-
-</div>
+    </main>
+    <p class="footer">BIO 137 Human Anatomy &amp; Physiology I · Summer 2026 · Instructor &amp; Grading Information</p>
+  </div>
+</body>
+</html>

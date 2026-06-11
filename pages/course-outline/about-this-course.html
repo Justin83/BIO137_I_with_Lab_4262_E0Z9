@@ -18,13 +18,16 @@
     body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
     .page { max-width: 1000px; margin: auto; padding: 24px; }
     .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+    .breadcrumb { font-size: .8rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--blue2); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
     .banner { display: block; width: 100%; height: auto; }
     .titlewrap { padding: 22px 30px 6px; }
     .eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
     .titlewrap h1 { margin: 6px 0 4px; color: var(--blue); font-size: 1.9rem; line-height: 1.1; }
     .titlewrap .meta { color: var(--muted); font-weight: 700; }
     .section { padding: 22px 30px; border-top: 1px solid var(--line); }
-    h2 { color: var(--blue); font-size: 1.32rem; margin: 0 0 12px; padding-left: 12px; border-left: 5px solid var(--blue); }
+    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
     h3 { color: var(--blue); margin: 16px 0 8px; font-size: 1.05rem; }
     p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
     ul { margin: 8px 0 0 1.25rem; padding: 0; }
@@ -49,7 +52,14 @@
 </head>
 <body>
   <!-- source-sha256: SOyXF2rIZavZogCDY9rGM3DeUAeLerKFA7l61P+IMvg -->
-  <div class="page"><main class="doc">
+  <div class="page">
+    <nav class="breadcrumb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <a href="../../index.html">BIO 137 Course Home</a>
+      <span>›</span>
+      <span>About This Course</span>
+    </nav>
+    <main class="doc">
     <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--line);">
       <div style="width:6px;background:var(--blue);flex-shrink:0;"></div>
       <div style="padding:20px 26px;flex:1;">
