@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIO 137 Module 1 Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 1000px; margin: auto; padding: 24px; }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+    .breadcrumb { font-size: .8rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--blue2); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .mod-hero { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .mod-hero-bar { width: 6px; background: var(--blue); flex-shrink: 0; }
+    .mod-hero-inner { padding: 20px 26px; flex: 1; display: flex; gap: 20px; align-items: flex-start; }
+    .mod-num { flex-shrink: 0; text-align: center; min-width: 52px; }
+    .mod-num .big { font-size: 3.2rem; font-weight: 800; color: var(--blue); line-height: 1; letter-spacing: -.04em; }
+    .mod-num .lbl { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #9aafcc; }
+    .mod-info { flex: 1; }
+    .eyebrow { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .67rem; margin-bottom: 5px; }
+    .mod-info h1 { margin: 0 0 6px; color: var(--blue); font-size: 1.75rem; line-height: 1.15; font-weight: 700; }
+    .mod-info .meta { color: var(--muted); font-size: .85rem; font-weight: 600; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 5px 11px; display: flex; gap: 6px; align-items: center; }
+    .chip b { color: var(--blue); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; }
+    .chip span { font-weight: 600; font-size: .85rem; }
+    .section { padding: 20px 26px; border-top: 1px solid var(--line); }
+    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
+    p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
+    .why { border-left: 3px solid var(--blue); background: #f3f7fb; padding: 13px 16px; font-size: .92rem; line-height: 1.65; }
+    .objs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .obj { display: flex; gap: 10px; background: #fafcfe; border: 1px solid var(--line); border-radius: 6px; padding: 12px; align-items: flex-start; }
+    .obj .n { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 6px; background: var(--blue); color: #fff; font-weight: 700; font-size: .82rem; display: flex; align-items: center; justify-content: center; }
+    .obj p { margin: 0; font-size: .88rem; font-weight: 500; line-height: 1.45; }
+
+    /* ── Schedule ─────────────────────────────────────────── */
+    .sched-loading { padding: 18px 0; text-align: center; color: var(--muted); font-size: .88rem; }
+    .sched-error   { padding: 12px 14px; background: #fdf0ee; border: 1px solid #f0b8b0; border-radius: 6px; color: #7a1e0c; font-size: .85rem; }
+    .sched-intro   { font-size: .82rem; color: var(--muted); margin-bottom: 14px; }
+    .sched-totals  { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+    .sched-total   { flex: 1; min-width: 120px; text-align: center; padding: 9px 8px; border-right: 1px solid var(--line); background: var(--soft); }
+    .sched-total:last-child { border-right: none; }
+    .sched-total .tv { font-size: 1rem; font-weight: 700; color: var(--blue); line-height: 1; }
+    .sched-total .tl { font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #9aafcc; margin-top: 3px; }
+    .sched-group   { margin-bottom: 12px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+    .sched-head    { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; padding: 9px 14px; background: var(--soft); border-bottom: 1px solid var(--line); }
+    .sched-head-title { font-size: .85rem; font-weight: 700; color: var(--blue); }
+    .sched-head-late  { font-size: .73rem; color: var(--muted); }
+    .sched-item    { display: flex; align-items: flex-start; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--line); }
+    .sched-item:last-of-type { border-bottom: none; }
+    .sbadge { flex-shrink: 0; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px; margin-top: 3px; white-space: nowrap; }
+    .sm  { background: #e8f0fb; color: #08315f; border: 1px solid #b8cfef; }
+    .pq  { background: #fef8e8; color: #7a5500; border: 1px solid #f0d88a; }
+    .lab { background: #eef8f2; color: #0e5e2b; border: 1px solid #9edab9; }
+    .lq  { background: #f0faf4; color: #0a5224; border: 1px solid #a8e0bc; }
+    .cs  { background: #f5f0fb; color: #4b1a7a; border: 1px solid #cbb8f0; }
+    .ex  { background: #fdf0ee; color: #7a1e0c; border: 1px solid #f0b8b0; }
+    .sh  { background: #f0f4f8; color: #4a6080; border: 1px solid #c5d3e0; }
+    .sched-body    { flex: 1; min-width: 0; }
+    .sched-title   { font-size: .88rem; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 2px; }
+    .sched-meta    { font-size: .75rem; color: var(--muted); }
+    .sched-meta .pts { font-weight: 700; color: var(--ink); }
+    .sched-foot    { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 7px 14px; background: #f8fafd; border-top: 1px solid var(--line); }
+    .sched-foot .fl  { font-size: .73rem; color: var(--muted); }
+    .sched-foot .fv  { font-size: .82rem; font-weight: 700; color: var(--blue); }
+    .exam-group .sched-head { background: #fdf0ee; border-color: #f0b8b0; }
+    .exam-group .sched-head-title { color: #7a1e0c; }
+    .no-late { font-size: .7rem; font-weight: 700; color: #7a1e0c; background: #fbd5d0; border: 1px solid #f0b8b0; border-radius: 4px; padding: 2px 7px; white-space: nowrap; }
+    .late-policy { margin-top: 14px; border-left: 3px solid var(--green); background: #effaf2; padding: 11px 15px; font-size: .84rem; color: #0c4a23; line-height: 1.65; border-radius: 0 4px 4px 0; }
+    .late-policy strong { font-weight: 700; }
+
+    .footer { text-align: center; color: var(--muted); font-size: .85rem; margin: 18px 0; }
+    @media (max-width: 720px) {
+      .objs { grid-template-columns: 1fr; }
+      .mod-info h1 { font-size: 1.4rem; }
+      .mod-num .big { font-size: 2.5rem; }
+      .mod-hero-inner { gap: 14px; }
+      .sched-head { flex-direction: column; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <nav class="breadcrumb">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <a href="../../index.html">BIO 137 Course Home</a>
+    <span>&rsaquo;</span>
+    <span>Module 1 Overview</span>
+  </nav>
+  <main class="doc">
+
+    <div class="mod-hero">
+      <div class="mod-hero-bar"></div>
+      <div class="mod-hero-inner">
+        <div class="mod-num">
+          <div class="big">01</div>
+          <div class="lbl">module</div>
+        </div>
+        <div class="mod-info">
+          <div class="eyebrow">Unit 1 &middot; BIO 137 Human A&amp;P I &middot; Summer 2026</div>
+          <h1>Introduction, Chemistry &amp; Cell Biology</h1>
+          <div class="meta">Chapters 1&ndash;3 &middot; Three chapters, three labs, one case study, and Unit 1 exams</div>
+          <div class="chips">
+            <div class="chip"><b>Chapter 1</b><span>Introduction to Anatomy &amp; Physiology</span></div>
+            <div class="chip"><b>Chapter 2</b><span>Chemistry</span></div>
+            <div class="chip"><b>Chapter 3</b><span>Cell Biology</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>Why It Matters</h2>
+      <div class="why">
+        <p>Unit 1 introduces the study of human anatomy and physiology that builds a foundation for everything else you will learn about the human body in this class and beyond. The terminology in Chapter 1 will be used over and over again as you study each organ system. The basic chemistry covered in Chapter 2 is essential for your understanding of the function of the muscular, nervous, cardiovascular, urinary, respiratory, and digestive systems, and more!</p>
+        <p>The concepts presented in Chapter 3 will help you appreciate how the cells in each organ system carry out the work that is essential for that system to function and to maintain the health of the body. The work you put into studying the concepts in Module 1 will make your future studies more meaningful and help you appreciate the extraordinary complexity of the human body. Happy studying!</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Learning Objectives</h2>
+      <p style="font-size:.88rem; color:var(--muted); margin-bottom:10px;">By the end of this module, you will be able to demonstrate competency in the following:</p>
+      <div class="objs">
+        <div class="obj"><span class="n">1</span><p>Compare and contrast anatomy and physiology.</p></div>
+        <div class="obj"><span class="n">2</span><p>Use correct terms to describe body organization, relative position, body regions, and directional relationships.</p></div>
+        <div class="obj"><span class="n">3</span><p>Explain basic principles of chemistry.</p></div>
+        <div class="obj"><span class="n">4</span><p>Describe cell structure and function.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Module Schedule</h2>
+      <div id="sched-root"><p class="sched-loading">Loading schedule&hellip;</p></div>
+    </section>
+
+  </main>
+  <p class="footer">BIO 137 Human Anatomy &amp; Physiology I &middot; Summer 2026 &middot; Module 1 Overview</p>
+</div>
+
+<script>
+(function () {
+  // ── Config ────────────────────────────────────────────────────
+  var CFG = {
+    url:     'https://efxymeviokaocosmpqwf.supabase.co',
+    key:     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVmeHltZXZpb2thb2Nvc21wcXdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NTg3OTUsImV4cCI6MjA5NjMzNDc5NX0.ecdW5HYsXsrjIFRIrf_PtcrFxKJB54Z00MTTRj_3Tno',
+    course:  'BIO 137',
+    section: 'E0Z9',
+    term:    'SU26',
+    weeks:   [2, 3],        // weeks that belong to this module
+    maxDate: '2026-07-01'   // inclusive ET date cap (Ch4 is also wk3 but belongs to Module 2)
+  };
+
+  // ── Helpers ───────────────────────────────────────────────────
+  function toETDate(ts) {
+    return new Date(ts).toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  }
+  function fmtLongDate(dateStr) {
+    var d = new Date(dateStr + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  }
+  function addDaysLabel(dateStr, n) {
+    var d = new Date(dateStr + 'T12:00:00');
+    d.setDate(d.getDate() + n);
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+  function fmtTime(min) {
+    if (!min) return null;
+    if (min < 60) return '~' + min + ' min';
+    var h = Math.floor(min / 60), m = min % 60;
+    return '~' + h + ' hr' + (m ? ' ' + m + ' min' : '');
+  }
+  function isExam(type) { return type === 'unit_exam' || type === 'final_exam'; }
+
+  var TYPE_MAP = {
+    interactive_exercise: { label: 'SmartBook',      cls: 'sm'  },
+    practice_quiz:        { label: 'Practice Quiz',  cls: 'pq'  },
+    lab_exercise:         { label: 'Lab',             cls: 'lab' },
+    lab_quiz:             { label: 'Lab Quiz',        cls: 'lq'  },
+    case_study:           { label: 'Case Study',      cls: 'cs'  },
+    unit_exam:            { label: 'Exam',            cls: 'ex'  },
+    final_exam:           { label: 'Final Exam',      cls: 'ex'  },
+    review:               { label: 'Review',          cls: 'pq'  },
+    start_here:           { label: 'Start Here',      cls: 'sh'  }
+  };
+  function badge(type) {
+    var t = TYPE_MAP[type] || { label: (type || 'Item').replace(/_/g,' '), cls: 'sh' };
+    return '<span class="sbadge ' + t.cls + '">' + t.label + '</span>';
+  }
+
+  // ── Fetch ─────────────────────────────────────────────────────
+  fetch(CFG.url + '/rest/v1/rpc/cf_section_status', {
+    method: 'POST',
+    headers: {
+      'apikey': CFG.key,
+      'Authorization': 'Bearer ' + CFG.key,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ p_course_code: CFG.course, p_section_code: CFG.section, p_term: CFG.term })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) { render(data); })
+  .catch(function(err) {
+    document.getElementById('sched-root').innerHTML =
+      '<p class="sched-error">Could not load schedule. Check your connection and refresh the page.</p>';
+  });
+
+  // ── Render ────────────────────────────────────────────────────
+  function render(data) {
+    var rows = (data.assignments || []).filter(function(r) {
+      return CFG.weeks.indexOf(r.week) !== -1 && toETDate(r.due_at) <= CFG.maxDate;
+    });
+
+    if (!rows.length) {
+      document.getElementById('sched-root').innerHTML =
+        '<p class="sched-error">No assignments found for this module. Contact your instructor if this looks incorrect.</p>';
+      return;
+    }
+
+    // Group by ET date
+    var groups = {}, order = [];
+    rows.forEach(function(r) {
+      var k = toETDate(r.due_at);
+      if (!groups[k]) { groups[k] = []; order.push(k); }
+      groups[k].push(r);
+    });
+    order.sort();
+
+    // Totals
+    var totPts = 0, totMin = 0, totItems = 0;
+    rows.forEach(function(r) {
+      totPts  += r.points  || 0;
+      totMin  += r.minutes || 0;
+      totItems++;
+    });
+
+    var html = '';
+
+    // Summary strip
+    html += '<div class="sched-totals">';
+    html += '<div class="sched-total"><div class="tv">' + totItems + '</div><div class="tl">Assignments</div></div>';
+    html += '<div class="sched-total"><div class="tv">' + totPts + '</div><div class="tl">Points</div></div>';
+    html += '<div class="sched-total"><div class="tv">' + (fmtTime(totMin) || '&mdash;') + '</div><div class="tl">Est. time</div></div>';
+    html += '</div>';
+
+    html += '<p class="sched-intro">All times are Eastern Time (ET). Most assignments accept late submissions up to 2 days after the due date.</p>';
+
+    order.forEach(function(dateStr) {
+      var group = groups[dateStr];
+      var hasExam = group.some(function(r) { return isExam(r.type); });
+      var groupPts = group.reduce(function(s,r){ return s + (r.points||0); }, 0);
+      var groupMin = group.reduce(function(s,r){ return s + (r.minutes||0); }, 0);
+
+      html += '<div class="sched-group' + (hasExam ? ' exam-group' : '') + '">';
+
+      // Header
+      html += '<div class="sched-head">';
+      html += '<span class="sched-head-title">Due ' + fmtLongDate(dateStr) + ' &mdash; 11:59 p.m.</span>';
+      if (hasExam) {
+        html += '<span class="no-late">&#9888; No late submissions</span>';
+      } else {
+        var lateSample = group.find(function(r) { return r.late_due_at; });
+        var lateLabel = lateSample
+          ? fmtLongDate(toETDate(lateSample.late_due_at))
+          : addDaysLabel(dateStr, 2);
+        html += '<span class="sched-head-late">Late accepted through ' + lateLabel + '</span>';
+      }
+      html += '</div>';
+
+      // Items
+      group.forEach(function(r) {
+        var meta = [];
+        if (r.points) meta.push('<span class="pts">' + r.points + ' pts</span>');
+        if (r.minutes) meta.push(fmtTime(r.minutes));
+        if (r.platform) meta.push(r.platform === 'Connect' ? 'McGraw Hill Connect' : r.platform);
+        html += '<div class="sched-item">';
+        html += badge(r.type);
+        html += '<div class="sched-body">';
+        html += '<div class="sched-title">' + r.title + '</div>';
+        if (meta.length) html += '<div class="sched-meta">' + meta.join(' &middot; ') + '</div>';
+        html += '</div></div>';
+      });
+
+      // Footer totals
+      html += '<div class="sched-foot">';
+      html += '<span class="fl">' + group.length + ' item' + (group.length !== 1 ? 's' : '') + '</span>';
+      html += '<span class="fv">' + groupPts + ' pts' + (groupMin ? ' &middot; ' + fmtTime(groupMin) : '') + '</span>';
+      html += '</div>';
+
+      html += '</div>';
+    });
+
+    // Late policy
+    html += '<div class="late-policy"><strong>Late work:</strong> most assignments accept submissions up to 2 days after the due date for partial credit. Exams have no late window &mdash; complete them on the assigned date.</div>';
+
+    document.getElementById('sched-root').innerHTML = html;
+  }
+})();
+</script>
+</body>
+</html>
