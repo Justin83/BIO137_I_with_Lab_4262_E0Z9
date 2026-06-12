@@ -9,73 +9,495 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
-      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
-      --paper: #ffffff; --soft: #eef4fb;
-      --green: #137a39; --purple: #7b3fb2;
+      --blue: #08315f;
+      --blue2: #0d4d8c;
+      --gold: #c69214;
+      --ink: #1a2d45;
+      --muted: #4a6080;
+      --line: #c5d3e0;
+      --paper: #ffffff;
+      --soft: #eef4fb;
+      --green: #137a39;
+      --purple: #7b3fb2;
     }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
-    .page { max-width: 1000px; margin: auto; padding: 24px; }
-    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
-    .breadcrumb { font-size: .8rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-    .breadcrumb a { color: var(--blue2); text-decoration: none; font-weight: 600; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .banner { display: block; width: 100%; height: auto; }
-    .titlewrap { padding: 22px 30px 6px; }
-    .eyebrow { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
-    .titlewrap h1 { margin: 6px 0 4px; color: var(--blue); font-size: 1.9rem; line-height: 1.1; }
-    .titlewrap .meta { color: var(--muted); font-weight: 700; }
-    .section { padding: 22px 30px; border-top: 1px solid var(--line); }
-    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
-    h3 { color: var(--blue); margin: 16px 0 8px; font-size: 1.05rem; }
-    p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
-    ul { margin: 8px 0 0 1.25rem; padding: 0; }
-    li { margin: 7px 0; }
-    .callout { border-left: 6px solid var(--blue); background: #f3f7fb; border-radius: 8px; padding: 16px 18px; }
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .card { background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
-    .card b { display: block; color: var(--blue); margin-bottom: 4px; }
-    .flow { display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 430px; margin: 8px auto 2px; text-align: center; }
-    .flowbox { background: var(--blue); color: #fff; border-radius: 16px; padding: 18px; font-weight: 900; font-size: 1.25rem; }
-    .flowarrow { color: var(--blue); font-size: 1.55rem; font-weight: 900; line-height: 1; }
-    .module-map { display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: center; }
-    .module-label { background: #111; color: #fff; border-radius: 16px; padding: 28px 14px; text-align: center; font-weight: 900; font-size: 1.35rem; }
-    .module-stack { display: grid; gap: 9px; }
-    .module-item { background: #eef3f9; border: 1px solid var(--line); border-left: 6px solid var(--blue); border-radius: 10px; padding: 10px 12px; }
-    .module-item b { color: var(--blue); }
-    .video-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #f7f9fc; margin: 12px 0; }
-    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .footer { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0; }
-    @media (max-width: 720px) { .grid, .module-map { grid-template-columns: 1fr; } .titlewrap h1 { font-size: 1.5rem; } }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #edf2f7;
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    .doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 24px rgba(8, 49, 95, .07);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .breadcrumb a {
+      color: var(--blue2);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .titlebar-accent {
+      width: 6px;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .titlebar-content {
+      padding: 20px 26px;
+      flex: 1;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .67rem;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      color: var(--blue);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 22px 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section:first-of-type {
+      border-top: none;
+    }
+
+    h2 {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+
+    h3 {
+      color: var(--blue);
+      margin: 16px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 8px 0 0 1.25rem;
+      padding: 0;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .callout {
+      border-left: 6px solid var(--blue);
+      background: #f3f7fb;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-top: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .card b {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      max-width: 430px;
+      margin: 8px auto 2px;
+      text-align: center;
+    }
+
+    .flowbox {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 16px;
+      padding: 18px;
+      font-weight: 900;
+      font-size: 1.25rem;
+    }
+
+    .flowarrow {
+      color: var(--blue);
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .module-map {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .module-label {
+      background: #111;
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px 14px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.35rem;
+    }
+
+    .module-stack {
+      display: grid;
+      gap: 9px;
+    }
+
+    .module-item {
+      background: #eef3f9;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--blue);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .module-item b {
+      color: var(--blue);
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 820px;
+      margin: 14px auto;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f7f9fc;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 14px;
+      }
+
+      .grid,
+      .module-map {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .section {
+        padding: 20px;
+      }
+
+      .module-label {
+        padding: 18px 14px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <!-- source-sha256: SOyXF2rIZavZogCDY9rGM3DeUAeLerKFA7l61P+IMvg -->
   <div class="page">
     <nav class="breadcrumb">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6"></path>
+      </svg>
       <a href="../../index.html">BIO 137 Course Home</a>
       <span>›</span>
       <span>About This Course</span>
     </nav>
+
     <main class="doc">
-    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--line);">
-      <div style="width:6px;background:var(--blue);flex-shrink:0;"></div>
-      <div style="padding:20px 26px;flex:1;">
-        <div style="color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.67rem;margin-bottom:5px;">Start Here · BIO 137 Summer 2026</div>
-        <h1 style="margin:0 0 6px;color:var(--blue);font-size:1.75rem;font-weight:700;line-height:1.15;">About This Course</h1>
-        <div style="color:var(--muted);font-size:.88rem;font-weight:600;">Course navigation, organization, textbook access, and online etiquette</div>
-      </div>
-    </div>
-    <section class="section"><h2>Introduction</h2><p>Welcome to BIO 137 online lecture and lab/Human Anatomy &amp; Physiology! This course is the first semester in a two-semester sequence that covers the structures and function of the human body. This semester we will study basic chemistry, cell structure, cell function, tissues, and the integumentary, skeletal, muscular, and nervous systems.</p><p>In this section, you will learn how the course is organized, how to navigate the course, and how to contact your instructor. You will also learn about important course policies.</p><div class="callout"><p><strong>Why it matters:</strong> This section covers important information about the course that you can put to immediate use.</p><p><strong>How you’ll use this:</strong> You will use this information to navigate through the course, find work, and submit it.</p></div></section>
-    <section class="section"><h2>Course Navigation Dashboard</h2><p>At the top of the page in Blackboard, you will see the dashboard. You can use this to go to the items it lists.</p><div class="grid"><div class="card"><b>Content</b>Find the content of the course, including materials, assignments, and resources.</div><div class="card"><b>Calendar</b>View course schedules, assignment due dates, and upcoming events.</div><div class="card"><b>Discussions</b>Participate in course-related conversations, share ideas, and engage with peers/instructors.</div><div class="card"><b>Gradebook</b>View your grades, track your performance, and access feedback for completed coursework.</div><div class="card"><b>Messages</b>Send messages to your instructor and other students. See the syllabus for preferred contact methods.</div><div class="card"><b>Groups</b>Access group tools if they are used for a course activity.</div></div><h3>Right-side menu</h3><div class="grid"><div class="card"><b>Class roster</b>View classmates and instructors to facilitate communication and collaboration.</div><div class="card"><b>Progress tracking</b>Monitor your completion status for course materials so you can stay organized and on track.</div><div class="card"><b>Class Collaborate</b>Access live, interactive virtual sessions if they are used in the course.</div><div class="card"><b>Attendance</b>View recorded attendance status for course sessions if utilized by the instructor.</div><div class="card"><b>Books &amp; Tools</b>Access resources and integrated tools that support the learning experience.</div></div></section>
-    <section class="section"><h2>Course Organization</h2><p>This course begins with a <strong>Start Here</strong> section containing important course information and five introductory assignments. Next, there are <strong>four modules</strong> that constitute the majority of the course work, covering chapters 1–12 of the textbook and 12 laboratory topics. The course concludes with a section containing <strong>review material</strong> and <strong>final exams</strong>.</p><div class="flow"><div class="flowbox">Start Here</div><div class="flowarrow">↓</div><div class="flowbox">4 Modules</div><div class="flowarrow">↓</div><div class="flowbox">Review &amp; Final Exams</div></div></section>
-    <section class="section"><h2>Modules</h2><p>Each module includes the following:</p><div class="module-map"><div class="module-label">Module</div><div class="module-stack"><div class="module-item"><b>Module Overview</b> — key components of the module and what you are expected to do.</div><div class="module-item"><b>3 Chapters</b> — study materials, Interactive SmartBook Exercise, and Chapter Practice Quiz for each chapter.</div><div class="module-item"><b>3 Lab Topics</b> — assigned Lab Exercise activity or activities and the corresponding Lab Quiz for each lab topic. Some lab exercises may include more than one part, but each lab topic counts as one lab exercise grade and one lab quiz grade.</div><div class="module-item"><b>Case Study Assignment</b> — application of chapter concepts to a practical, real-life situation.</div><div class="module-item"><b>Exams</b> — one lecture exam over all three chapters and one lab exam over all three lab topics.</div><div class="module-item"><b>Give Feedback</b> — an opportunity to provide feedback about your experience in the module.</div></div></div></section>
-    <section class="section"><h2>Finding Work in the Class</h2><p>Once you open a module, go through each page in order by selecting the arrow at the right portion of the module. You can also use the arrow to the left to go to a previous page in the module.</p><p><strong>Each module includes information and activities</strong> that will help you reach the objectives for the module. It is crucial that you go through each page in a module because many pages offer explanation for an assignment before you complete it. Do not make the mistake of only following the course schedule and trying to complete only the graded activities.</p><p>You are required to access all course materials through Blackboard. Begin and end all assignments in Blackboard. Some assignments will transfer you to other programs, but when you complete an assignment, choose the option to “return to Blackboard” to help make sure your grades transfer properly.</p></section>
-    <section class="section"><h2>Textbook</h2><p>The instructional materials for this course, including the electronic textbook and access to Connect by McGraw Hill, are provided through Blackboard. You purchase everything you need for this course as part of your tuition and fees.</p><p>If you wish to purchase an optional paper version of your textbook, you may do so through the SCC Bookstore or online.</p><div class="grid"><div class="card"><b>Title</b>Hole’s Human Anatomy and Physiology, 2025</div><div class="card"><b>Authors</b>Charles Welsh and Cynthia Prentice-Craver</div><div class="card"><b>Optional hard copy ISBN</b>9781265531102</div></div></section>
-    <section class="section"><h2>Online Etiquette</h2><p>This video will provide an overview of online etiquette, including guidelines and good practices for online communication in emails, discussion forums, and chat rooms.</p><div class="video-wrap"><iframe width="560" height="315" src="https://www.youtube.com/embed/K_Ssuz2mSXM?si=uwuHeNjvWRhZQqDb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p>Please practice the following guidelines when posting comments in our course:</p><ul><li><strong>Format your text so it is easy to read.</strong> Use standard paragraph spacing, indentation, and legible font choices.</li><li><strong>Be concise and to the point in your communication.</strong> Limit discussion forum posts to a few paragraphs and proofread before posting.</li><li><strong>Avoid the use of all caps.</strong> All caps may be interpreted as shouting and can make text more difficult to read.</li><li><strong>Avoid abbreviations</strong> such as OMG.</li><li><strong>Avoid humor and sarcasm</strong> when it may be difficult to detect tone in written communication.</li><li><strong>Flaming is not proper</strong> in our courses. Practice civil discussion.</li><li><strong>Respect the privacy of communication within a course.</strong> Do not publicly forward classmates’ comments outside of the course.</li><li><strong>Stay on topic</strong> in discussions.</li><li><strong>Be respectful.</strong> Share comments in ways that are not likely to be misinterpreted or provide constructive suggestions privately when appropriate.</li></ul></section>
-    <section class="section"><h2>Next Step</h2><div class="callout"><p><strong>Next up, learn about the course syllabus and outline.</strong></p></div></section>
-  </main><p class="footer">BIO 137 Human Anatomy &amp; Physiology I · Summer 2026 · About This Course</p></div>
+      <header class="titlebar">
+        <div class="titlebar-accent"></div>
+        <div class="titlebar-content">
+          <div class="eyebrow">Start Here · BIO 137 Summer 2026</div>
+          <h1>About This Course</h1>
+          <div class="meta">Course navigation, organization, textbook access, and online etiquette</div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>Introduction</h2>
+        <p>Welcome to BIO 137: Human Anatomy &amp; Physiology I with Lab. This online course is the first semester in a two-semester sequence that covers the structure and function of the human body. This semester we will study basic chemistry, cell structure, cell function, tissues, and the integumentary, skeletal, muscular, and nervous systems.</p>
+        <p>In this section, you will learn how the course is organized, how to navigate the course, and how to contact me. You will also review several important course policies.</p>
+
+        <div class="callout">
+          <p><strong>Why it matters:</strong> This section covers important information about the course that you can put to immediate use.</p>
+          <p><strong>How you’ll use this:</strong> You will use this information to navigate the course, find work, and submit it.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Course Navigation Dashboard</h2>
+        <p>At the top of the page in Blackboard, you will see the course navigation dashboard. Use this area to move between the major tools and sections of the course.</p>
+
+        <div class="grid">
+          <div class="card">
+            <b>Content</b>
+            Find course materials, module pages, assignments, labs, exams, and resources.
+          </div>
+
+          <div class="card">
+            <b>Calendar</b>
+            View course schedules, assignment due dates, and upcoming deadlines.
+          </div>
+
+          <div class="card">
+            <b>Discussions</b>
+            Participate in course-related conversations, share ideas, and engage with classmates and the instructor.
+          </div>
+
+          <div class="card">
+            <b>Gradebook</b>
+            View your grades, track your performance, and access feedback for completed coursework.
+          </div>
+
+          <div class="card">
+            <b>Messages</b>
+            Use Blackboard messages to contact me. This is the primary communication method for the course unless another method is specifically requested.
+          </div>
+
+          <div class="card">
+            <b>Groups</b>
+            Access group tools if they are used for a course activity.
+          </div>
+        </div>
+
+        <h3>Right-side menu</h3>
+
+        <div class="grid">
+          <div class="card">
+            <b>Class Roster</b>
+            View classmates and instructors connected to the course.
+          </div>
+
+          <div class="card">
+            <b>Progress Tracking</b>
+            Monitor your completion status for course materials so you can stay organized and on track.
+          </div>
+
+          <div class="card">
+            <b>Microsoft Teams</b>
+            Access live video conferencing and screen sharing when you need help with an assignment, lab, or course tool.
+          </div>
+
+          <div class="card">
+            <b>Attendance</b>
+            View recorded attendance status if attendance tracking is used in the course.
+          </div>
+
+          <div class="card">
+            <b>Books &amp; Tools</b>
+            Access textbook materials, McGraw Hill Connect, and other integrated course tools.
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Course Organization</h2>
+        <p>This course begins with a <strong>Start Here</strong> section containing important course information and five graded introductory assignments. Next, there are <strong>four modules</strong> that make up the majority of the course work, covering chapters 1–12 of the textbook and 12 laboratory topics. The course concludes with a section containing <strong>review material</strong> and <strong>final exams</strong>.</p>
+
+        <div class="flow" aria-label="Course organization flow">
+          <div class="flowbox">Start Here</div>
+          <div class="flowarrow">↓</div>
+          <div class="flowbox">4 Modules</div>
+          <div class="flowarrow">↓</div>
+          <div class="flowbox">Review &amp; Final Exams</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Modules</h2>
+        <p>Each module follows a consistent pattern so that you know what to expect as you move through the course.</p>
+
+        <div class="module-map">
+          <div class="module-label">Module</div>
+
+          <div class="module-stack">
+            <div class="module-item">
+              <b>Module Overview</b> — key components of the module and what you are expected to complete.
+            </div>
+
+            <div class="module-item">
+              <b>3 Chapters</b> — study materials, Interactive SmartBook Exercises, and Chapter Practice Quizzes for the assigned textbook chapters.
+            </div>
+
+            <div class="module-item">
+              <b>3 Lab Topics</b> — assigned Lab Exercise activity or activities and the corresponding Lab Quiz for each lab topic. Some lab exercises may include more than one part, but each lab topic counts as one lab exercise grade and one lab quiz grade.
+            </div>
+
+            <div class="module-item">
+              <b>Case Study Assignment</b> — application of chapter concepts to a practical or real-life situation.
+            </div>
+
+            <div class="module-item">
+              <b>Module Exams</b> — one lecture exam over the assigned chapters and one lab exam over the assigned lab topics.
+            </div>
+
+            <div class="module-item">
+              <b>Give Feedback</b> — a brief feedback opportunity that may appear at the end of a module but is separate from the main graded coursework.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Finding Work in the Class</h2>
+        <p>Once you open a module, move through the pages in order by selecting the arrow on the right side of the module page. You can also use the arrow on the left side to return to a previous page.</p>
+
+        <p><strong>Each module includes information and activities</strong> that will help you reach the objectives for the module. It is important to go through each page in a module because many pages explain an assignment before you complete it. Do not rely only on the course schedule and skip directly to the graded activities.</p>
+
+        <p>You are required to access all course materials through Blackboard. Begin and end all assignments in Blackboard. Some assignments will transfer you to other programs, such as McGraw Hill Connect, but when you complete an assignment, choose the option to return to Blackboard when available. This helps make sure your grades transfer properly.</p>
+      </section>
+
+      <section class="section">
+        <h2>Textbook</h2>
+        <p>The instructional materials for this course, including the electronic textbook and access to McGraw Hill Connect, are provided through Blackboard. You purchase everything you need for this course as part of your tuition and fees.</p>
+
+        <p>If you wish to purchase an optional paper version of your textbook, you may do so through the SCC Bookstore or online.</p>
+
+        <div class="grid">
+          <div class="card">
+            <b>Title</b>
+            Hole’s Human Anatomy and Physiology, 2025
+          </div>
+
+          <div class="card">
+            <b>Authors</b>
+            Charles Welsh and Cynthia Prentice-Craver
+          </div>
+
+          <div class="card">
+            <b>Optional hard copy ISBN</b>
+            9781265531102
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Online Etiquette</h2>
+        <p>This video provides an overview of online etiquette, including good practices for online communication in messages, discussion forums, and virtual meetings.</p>
+
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/K_Ssuz2mSXM?si=uwuHeNjvWRhZQqDb" title="Online etiquette video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <p>Please practice the following guidelines when posting comments or communicating in the course:</p>
+
+        <ul>
+          <li><strong>Format your text so it is easy to read.</strong> Use standard paragraph spacing and legible font choices.</li>
+          <li><strong>Be concise and to the point.</strong> Keep discussion posts focused and proofread before posting.</li>
+          <li><strong>Avoid the use of all caps.</strong> All caps may be interpreted as shouting and can make text more difficult to read.</li>
+          <li><strong>Avoid informal abbreviations</strong> such as OMG in academic course communication.</li>
+          <li><strong>Avoid humor and sarcasm</strong> when tone may be difficult to detect in written communication.</li>
+          <li><strong>Practice civil discussion.</strong> Flaming, insults, or hostile comments are not appropriate in this course.</li>
+          <li><strong>Respect the privacy of communication within the course.</strong> Do not publicly forward classmates’ comments outside of the course.</li>
+          <li><strong>Stay on topic</strong> in discussions and course messages.</li>
+          <li><strong>Be respectful.</strong> Share comments in ways that are not likely to be misinterpreted, and provide constructive suggestions privately when appropriate.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Next Step</h2>
+        <div class="callout">
+          <p><strong>Next up, review the course syllabus and course outline.</strong></p>
+        </div>
+      </section>
+    </main>
+
+    <p class="footer">BIO 137 Human Anatomy &amp; Physiology I · Summer 2026 · About This Course</p>
+  </div>
 </body>
 </html>
