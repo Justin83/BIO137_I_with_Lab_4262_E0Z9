@@ -11,7 +11,7 @@
     :root {
       --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
       --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
-      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39; --red: #b42318;
     }
     * { box-sizing: border-box; }
     body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
@@ -34,6 +34,8 @@
     h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
     p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
     .why { border-left: 3px solid var(--blue); background: #f3f7fb; padding: 13px 16px; font-size: .92rem; line-height: 1.65; }
+    .danger { border-left: 5px solid var(--red); background: #fff3f2; border-radius: 6px; padding: 14px 16px; color: #5f1712; font-size: .94rem; line-height: 1.55; }
+    .danger strong { color: var(--red); }
     .dates { border-left: 3px solid var(--green); background: #effaf2; padding: 13px 16px; }
     .dates .lbl { display: block; color: var(--blue); font-weight: 700; margin-bottom: 6px; font-size: .85rem; }
     .dates ul { margin: 0; padding-left: 18px; font-size: .9rem; }
@@ -80,6 +82,13 @@
       </div>
 
       <section class="section">
+        <h2>Important Deadline Policy</h2>
+        <div class="danger">
+          <p><strong>No extensions in this final module.</strong> The automatic two-day extension window used for most regular course assignments and module exams does <strong>not</strong> apply to the final review activities or the comprehensive final exam. All final review quizzes and both final exam portions must be completed by the published deadlines in Blackboard.</p>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>Why It Matters</h2>
         <div class="why">
           <p>You've made it to the final stretch! This module pulls together everything you have studied this semester — all 12 lecture chapters and all 12 lab activities. The comprehensive final is your opportunity to demonstrate how much you have learned about the structure and function of the human body.</p>
@@ -90,71 +99,20 @@
       <section class="section">
         <h2>What's in This Module</h2>
         <div class="ecards">
-          <div class="ecard">
-            <h3>Final Review Quizzes</h3>
-            <div class="big">20 <small>pts total</small></div>
-            <ul>
-              <li>Divided by module and by lecture/lab content.</li>
-              <li>Designed to prepare you for the comprehensive final.</li>
-              <li>Optional bonus review assignments may be offered at your instructor's discretion.</li>
-            </ul>
-          </div>
-          <div class="ecard">
-            <h3>Final Exam — Lecture</h3>
-            <div class="big">60 <small>pts</small></div>
-            <ul>
-              <li>Comprehensive over all 12 lecture chapters.</li>
-              <li>60 questions, 1 point each.</li>
-              <li>120 minutes to complete.</li>
-            </ul>
-          </div>
-          <div class="ecard">
-            <h3>Final Exam — Lab</h3>
-            <div class="big">40 <small>pts</small></div>
-            <ul>
-              <li>Comprehensive over all 12 lab activities.</li>
-              <li>40 questions, 1 point each.</li>
-              <li>80 minutes to complete.</li>
-            </ul>
-          </div>
+          <div class="ecard"><h3>Final Review Quizzes</h3><div class="big">20 <small>pts total</small></div><ul><li>Divided by module and by lecture/lab content.</li><li>Designed to prepare you for the comprehensive final.</li><li>Optional bonus review assignments may be offered at your instructor's discretion.</li></ul></div>
+          <div class="ecard"><h3>Final Exam — Lecture</h3><div class="big">60 <small>pts</small></div><ul><li>Comprehensive over all 12 lecture chapters.</li><li>60 questions, 1 point each.</li><li>120 minutes to complete.</li></ul></div>
+          <div class="ecard"><h3>Final Exam — Lab</h3><div class="big">40 <small>pts</small></div><ul><li>Comprehensive over all 12 lab activities.</li><li>40 questions, 1 point each.</li><li>80 minutes to complete.</li></ul></div>
         </div>
         <p style="margin-top:14px;">The lecture and laboratory portions are administered separately and together are worth <strong>100 points</strong>. Both portions are available during the final exam window. Your answers must be submitted before the deadline, and the final exam cannot be repeated for a higher score.</p>
       </section>
 
       <section class="section">
         <h2>Key Dates</h2>
-        <div class="dates">
-          <span class="lbl">All times are eastern time (ET)</span>
-          <ul>
-            <li><strong>Final Review Quizzes</strong> — due Thursday, August 6, 2026 at 11:59 p.m.</li>
-            <li><strong>Final Exam window opens</strong> — Wednesday, August 5, 2026 at 5:00 p.m.</li>
-            <li><strong>Final Exam window closes</strong> — Friday, August 7, 2026 at 11:59 p.m.</li>
-          </ul>
-        </div>
+        <div class="dates"><span class="lbl">All times are eastern time (ET)</span><ul><li><strong>Final Review Quizzes</strong> — due Thursday, August 6, 2026 at 11:59 p.m.</li><li><strong>Final Exam window opens</strong> — Wednesday, August 5, 2026 at 5:00 p.m.</li><li><strong>Final Exam window closes</strong> — Friday, August 7, 2026 at 11:59 p.m.</li></ul></div>
       </section>
 
-      <section class="section">
-        <h2>How to Prepare</h2>
-        <p>Start with the final review quizzes — they are organized by module so you can pinpoint the areas that need the most attention. As you review, return to the chapters, SmartBook exercises, and lab activities for any topics you find challenging.</p>
-        <p>Plan your time within the exam window so you can complete both the lecture and lab portions without rushing, and make sure you have a reliable internet connection before you begin. See the schedule in Blackboard for all official dates and times.</p>
-      </section>
-
-      <section class="section">
-        <h2>Final Module To-Do List</h2>
-        <ul class="todo">
-          <li><span class="num">1</span><span>Complete all Final Review Quizzes (20 points total) to prepare for the comprehensive final.</span></li>
-          <li><span class="num">2</span><span>Complete any optional bonus review assignments offered by your instructor.</span></li>
-          <li><span class="num">3</span><span>Revisit chapters, SmartBook exercises, and lab activities for any topics that need more review.</span></li>
-          <li><span class="num">4</span><span>Take the Final Exam — Lecture Portion (60 questions, 120 minutes).</span></li>
-          <li><span class="num">5</span><span>Take the Final Exam — Lab Portion (40 questions, 80 minutes).</span></li>
-          <li><span class="num">6</span><span>Submit both portions before the final exam window closes Friday, August 7 at 11:59 p.m. ET.</span></li>
-        </ul>
-        <div class="todo-note">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Check off items in Blackboard — this is a reference copy.
-        </div>
-      </section>
-
+      <section class="section"><h2>How to Prepare</h2><p>Start with the final review quizzes — they are organized by module so you can pinpoint the areas that need the most attention. As you review, return to the chapters, SmartBook exercises, and lab activities for any topics you find challenging.</p><p>Plan your time within the exam window so you can complete both the lecture and lab portions without rushing, and make sure you have a reliable internet connection before you begin. See the schedule in Blackboard for all official dates and times.</p></section>
+      <section class="section"><h2>Final Module To-Do List</h2><ul class="todo"><li><span class="num">1</span><span>Complete all Final Review Quizzes (20 points total) to prepare for the comprehensive final.</span></li><li><span class="num">2</span><span>Complete any optional bonus review assignments offered by your instructor.</span></li><li><span class="num">3</span><span>Revisit chapters, SmartBook exercises, and lab activities for any topics that need more review.</span></li><li><span class="num">4</span><span>Take the Final Exam — Lecture Portion (60 questions, 120 minutes).</span></li><li><span class="num">5</span><span>Take the Final Exam — Lab Portion (40 questions, 80 minutes).</span></li><li><span class="num">6</span><span>Submit both portions before the final exam window closes Friday, August 7 at 11:59 p.m. ET.</span></li></ul><div class="todo-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Check off items in Blackboard — this is a reference copy.</div></section>
     </main>
     <p class="footer">BIO 137 Human Anatomy &amp; Physiology I · Summer 2026 · Review for Final &amp; Final Exams</p>
   </div>
