@@ -1,0 +1,166 @@
+{
+  "repo": "Justin83/BIO137_I_with_Lab_4262_E0Z9",
+  "pagesBase": "https://justin83.github.io/BIO137_I_with_Lab_4262_E0Z9",
+  "pages": [
+    {
+      "name": "Course Home",
+      "path": "index.html",
+      "version": "1.0",
+      "module": null,
+      "category": "course-home",
+      "data": "static",
+      "status": "ready",
+      "description": "Top-level course pages index"
+    },
+    {
+      "name": "About This Course",
+      "path": "pages/start-here/about-this-course.html",
+      "version": "1.0",
+      "module": null,
+      "category": "start-here",
+      "data": "static",
+      "status": "ready",
+      "description": "Course intro page for the Start Here module"
+    },
+    {
+      "name": "About This Course (Course Outline)",
+      "path": "pages/course-outline/about-this-course.html",
+      "version": "1.0",
+      "module": null,
+      "category": "course-outline",
+      "data": "static",
+      "status": "ready",
+      "description": "About this course — course outline version"
+    },
+    {
+      "name": "Daily Course Schedule",
+      "path": "pages/course-outline/course-outline-daily.html",
+      "version": "1.0",
+      "module": null,
+      "category": "course-outline",
+      "data": "static",
+      "status": "ready",
+      "description": "Full semester daily schedule"
+    },
+    {
+      "name": "Meet the Instructor",
+      "path": "pages/meet the instructor/meet.html",
+      "version": "1.0",
+      "module": null,
+      "category": "start-here",
+      "data": "static",
+      "status": "ready",
+      "description": "Instructor bio and contact page"
+    },
+    {
+      "name": "Syllabus (Clean)",
+      "path": "pages/syllabus/syllabus-clean-logo-layout-lite.html",
+      "version": "1.0",
+      "module": null,
+      "category": "syllabus",
+      "data": "static",
+      "status": "ready",
+      "description": "Clean lite syllabus layout with logo"
+    },
+    {
+      "name": "Syllabus (Radical)",
+      "path": "pages/syllabus/syllabus-radical-v2.html",
+      "version": "2.0",
+      "module": null,
+      "category": "syllabus",
+      "data": "static",
+      "status": "ready",
+      "description": "Radical redesign syllabus v2"
+    },
+    {
+      "name": "Syllabus (Visual)",
+      "path": "pages/syllabus/syllabus-visual.html",
+      "version": "1.0",
+      "module": null,
+      "category": "syllabus",
+      "data": "static",
+      "status": "ready",
+      "description": "Visual/infographic syllabus layout"
+    },
+    {
+      "name": "Start Here Feedback Survey",
+      "path": "pages/surveys/start-here-feedback.html",
+      "version": "1.0",
+      "module": null,
+      "category": "survey",
+      "data": "static",
+      "status": "ready",
+      "description": "End-of-start-here module feedback form"
+    },
+    {
+      "name": "Module 1 Overview",
+      "path": "pages/modules/module-1.html",
+      "version": "1.0",
+      "module": 1,
+      "category": "module-overview",
+      "data": "static",
+      "status": "ready",
+      "description": "Introduction, Chemistry & Cell Biology — static overview with Why It Matters, LOs, Key Dates, To-Do list"
+    },
+    {
+      "name": "Module 1 Schedule (Live)",
+      "path": "pages/modules/module-1v2.html",
+      "version": "2.0",
+      "module": 1,
+      "category": "module-overview",
+      "data": "live-supabase",
+      "status": "ready",
+      "description": "Introduction, Chemistry & Cell Biology — live Supabase schedule, day-grouped with auto late dates"
+    },
+    {
+      "name": "Module 2 Overview",
+      "path": "pages/modules/module-2.html",
+      "version": "1.0",
+      "module": 2,
+      "category": "module-overview",
+      "data": "static",
+      "status": "ready",
+      "description": "Metabolism, Tissues & the Integumentary System — static overview"
+    },
+    {
+      "name": "Module 3 Overview",
+      "path": "pages/modules/module-3.html",
+      "version": "1.0",
+      "module": 3,
+      "category": "module-overview",
+      "data": "static",
+      "status": "ready",
+      "description": "The Skeletal & Muscular Systems — static overview"
+    },
+    {
+      "name": "Module 4 Overview",
+      "path": "pages/modules/module-4.html",
+      "version": "1.0",
+      "module": 4,
+      "category": "module-overview",
+      "data": "static",
+      "status": "ready",
+      "description": "The Nervous System — static overview"
+    },
+    {
+      "name": "Final Review & Exams",
+      "path": "pages/modules/module-final.html",
+      "version": "1.0",
+      "module": null,
+      "category": "module-overview",
+      "data": "static",
+      "status": "ready",
+      "description": "Review for Final & Final Exams overview page"
+    },
+    {
+      "name": "Asset Test",
+      "path": "pages/test/asset-test.html",
+      "version": "1.0",
+      "module": null,
+      "category": "test",
+      "data": "static",
+      "status": "draft",
+      "description": "Internal asset/style test page — not for Blackboard"
+    }
+  ]
+}
