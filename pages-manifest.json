@@ -23,24 +23,14 @@
       "description": "Course intro page for the Start Here module"
     },
     {
-      "name": "About This Course (Course Outline)",
+      "name": "About This Course (Outline Version)",
       "path": "pages/course-outline/about-this-course.html",
       "version": "1.0",
       "module": null,
-      "category": "course-outline",
+      "category": "start-here",
       "data": "static",
       "status": "ready",
-      "description": "About this course — course outline version"
-    },
-    {
-      "name": "Daily Course Schedule",
-      "path": "pages/course-outline/course-outline-daily.html",
-      "version": "1.0",
-      "module": null,
-      "category": "course-outline",
-      "data": "static",
-      "status": "ready",
-      "description": "Full semester daily schedule"
+      "description": "About this course — course outline folder version"
     },
     {
       "name": "Meet the Instructor",
@@ -81,6 +71,16 @@
       "data": "static",
       "status": "ready",
       "description": "Visual/infographic syllabus layout"
+    },
+    {
+      "name": "Daily Course Schedule",
+      "path": "pages/course-outline/course-outline-daily.html",
+      "version": "1.0",
+      "module": null,
+      "category": "course-outline",
+      "data": "static",
+      "status": "ready",
+      "description": "Full semester daily schedule"
     },
     {
       "name": "Start Here Feedback Survey",
