@@ -10,7 +10,7 @@
       "category": "course-home",
       "data": "static",
       "status": "ready",
-      "description": "Internal index page — not for Blackboard"
+      "description": "Internal index page \u2014 not for Blackboard"
     },
     {
       "name": "About This Course",
@@ -21,16 +21,6 @@
       "data": "static",
       "status": "ready",
       "description": "Course intro page for the Start Here module"
-    },
-    {
-      "name": "About This Course (Outline Version)",
-      "path": "pages/course-outline/about-this-course.html",
-      "version": "1.0",
-      "module": null,
-      "category": "start-here",
-      "data": "static",
-      "status": "ready",
-      "description": "About this course — course outline folder version"
     },
     {
       "name": "Meet the Instructor",
@@ -100,7 +90,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "Introduction, Chemistry & Cell Biology — static overview with Why It Matters, LOs, Key Dates, To-Do list"
+      "description": "Introduction, Chemistry & Cell Biology \u2014 static overview with Why It Matters, LOs, Key Dates, To-Do list"
     },
     {
       "name": "Module 1 Schedule (Live)",
@@ -110,7 +100,7 @@
       "category": "module-overview",
       "data": "live-supabase",
       "status": "ready",
-      "description": "Introduction, Chemistry & Cell Biology — live Supabase schedule, day-grouped with auto late dates"
+      "description": "Introduction, Chemistry & Cell Biology \u2014 live Supabase schedule, day-grouped with auto late dates"
     },
     {
       "name": "Module 2 Overview",
@@ -120,7 +110,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "Metabolism, Tissues & the Integumentary System — static overview"
+      "description": "Metabolism, Tissues & the Integumentary System \u2014 static overview"
     },
     {
       "name": "Module 3 Overview",
@@ -130,7 +120,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "The Skeletal & Muscular Systems — static overview"
+      "description": "The Skeletal & Muscular Systems \u2014 static overview"
     },
     {
       "name": "Module 4 Overview",
@@ -140,7 +130,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "The Nervous System — static overview"
+      "description": "The Nervous System \u2014 static overview"
     },
     {
       "name": "Final Review & Exams",
@@ -160,7 +150,7 @@
       "category": "test",
       "data": "static",
       "status": "draft",
-      "description": "Internal asset/style test page — not for Blackboard"
+      "description": "Internal asset/style test page \u2014 not for Blackboard"
     }
   ]
 }
