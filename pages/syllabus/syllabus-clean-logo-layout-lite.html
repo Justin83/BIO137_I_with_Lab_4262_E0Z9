@@ -139,6 +139,56 @@
     .tc-lbl { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
     .tc-val { font-size: .83rem; font-weight: 600; line-height: 1.4; }
 
+    /* ── Course Topic Outline ── */
+    .topic-outline .topic-intro { margin-bottom: 14px; }
+    .topic-units { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+    .topic-unit {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fbfdff;
+    }
+    .topic-unit-head {
+      background: var(--soft);
+      border-bottom: 1px solid var(--line);
+      padding: 13px 14px;
+    }
+    .topic-label {
+      color: var(--gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-size: .72rem;
+      margin-bottom: 3px;
+    }
+    .topic-unit h3 {
+      margin: 0 0 2px;
+      color: var(--blue);
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+    .topic-chapters {
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 700;
+    }
+    .topic-unit-body { padding: 13px 14px 15px; }
+    .topic-unit-body ul { margin-top: 6px; }
+    .topic-focus {
+      margin-top: 10px;
+      padding: 11px 12px;
+      background: #f8fbfe;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .topic-focus strong { color: var(--blue); }
+    .topic-lab-summary {
+      margin-top: 14px;
+      border-left: 6px solid var(--gold);
+      background: #fff9ec;
+      padding: 14px;
+    }
+
     @media (max-width: 850px) {
       .head, .cols, .three, .grades { grid-template-columns: 1fr; }
       .side { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 16px; }
@@ -212,6 +262,97 @@
         <h2>Course Description</h2>
         <p>BIO 137 Human Anatomy and Physiology I is an introduction to human anatomy and physiology. This course is the study of the interrelationship and structure and function of each body system in two semesters. The first semester will include basic chemistry, cell structure, cell physiology, metabolism, tissues, and integumentary, skeletal, muscular, and nervous systems.</p>
         <p>The laboratory portion of BIO 137 is designed as a hands-on experience that corresponds to the lecture portion of the course. Anatomical models, computer programs, charts, slides of microscopic tissue sections, physiological experiments and preserved specimens for dissection will be used to reemphasize principles and structures discussed in lecture.</p>
+      </section>
+
+
+      <section class="section topic-outline" id="course-topic-outline">
+        <h2>Course Topic Outline</h2>
+        <p class="topic-intro">
+          BIO 137 introduces the relationship between structure and function in the human body. The course begins with foundational concepts in anatomy, physiology, chemistry, cells, metabolism, and tissues, then applies those ideas to selected body systems.
+        </p>
+        <div class="note">
+          <strong>Major course emphasis:</strong> anatomical terminology, homeostasis, cell and tissue function, and the structure-function relationships of the integumentary, skeletal, muscular, and nervous systems.
+        </div>
+
+        <div class="topic-units">
+
+          <article class="topic-unit">
+            <div class="topic-unit-head">
+              <div class="topic-label">Unit 1</div>
+              <h3>Foundations of Anatomy, Physiology, Chemistry, and Cells</h3>
+              <div class="topic-chapters">Chapters 1–3</div>
+            </div>
+            <div class="topic-unit-body">
+              <ul>
+                <li><strong>Chapter 1:</strong> Introduction to Human Anatomy and Physiology</li>
+                <li><strong>Chapter 2:</strong> Chemical Basis of Life</li>
+                <li><strong>Chapter 3:</strong> Cells</li>
+              </ul>
+              <div class="topic-focus">
+                <strong>Major focus:</strong> anatomy and physiology, levels of organization, homeostasis, body cavities, anatomical terminology, basic chemistry, biological molecules, cell structure, membrane transport, the cell cycle, and cell death.
+              </div>
+            </div>
+          </article>
+
+          <article class="topic-unit">
+            <div class="topic-unit-head">
+              <div class="topic-label">Unit 2</div>
+              <h3>Cellular Metabolism, Tissues, and the Integumentary System</h3>
+              <div class="topic-chapters">Chapters 4–6</div>
+            </div>
+            <div class="topic-unit-body">
+              <ul>
+                <li><strong>Chapter 4:</strong> Cellular Metabolism</li>
+                <li><strong>Chapter 5:</strong> Tissues</li>
+                <li><strong>Chapter 6:</strong> Integumentary System</li>
+              </ul>
+              <div class="topic-focus">
+                <strong>Major focus:</strong> enzymes, ATP, cellular respiration, DNA, protein synthesis, mutations, epithelial tissue, connective tissue, muscle tissue, nervous tissue, skin layers, accessory structures, skin functions, wound healing, burns, and life-span changes.
+              </div>
+            </div>
+          </article>
+
+          <article class="topic-unit">
+            <div class="topic-unit-head">
+              <div class="topic-label">Unit 3</div>
+              <h3>The Skeletal and Muscular Systems</h3>
+              <div class="topic-chapters">Chapters 7–9</div>
+            </div>
+            <div class="topic-unit-body">
+              <ul>
+                <li><strong>Chapter 7:</strong> Skeletal System</li>
+                <li><strong>Chapter 8:</strong> Joints of the Skeletal System</li>
+                <li><strong>Chapter 9:</strong> Muscular System</li>
+              </ul>
+              <div class="topic-focus">
+                <strong>Major focus:</strong> bone structure and function, bone growth and repair, axial and appendicular skeleton, major bones and landmarks, joint classification, joint movements, skeletal muscle structure, muscle contraction, energy use, muscle fatigue, smooth muscle, cardiac muscle, major skeletal muscles, and life-span changes.
+              </div>
+            </div>
+          </article>
+
+          <article class="topic-unit">
+            <div class="topic-unit-head">
+              <div class="topic-label">Unit 4</div>
+              <h3>The Nervous System and Senses</h3>
+              <div class="topic-chapters">Chapters 10–12</div>
+            </div>
+            <div class="topic-unit-body">
+              <ul>
+                <li><strong>Chapter 10:</strong> Nervous System I: Basic Structure and Function</li>
+                <li><strong>Chapter 11:</strong> Nervous System II: Divisions of the Nervous System</li>
+                <li><strong>Chapter 12:</strong> Nervous System III: Senses</li>
+              </ul>
+              <div class="topic-focus">
+                <strong>Major focus:</strong> neurons, neuroglia, membrane potentials, action potentials, synapses, neurotransmitters, impulse processing, brain and spinal cord structure, meninges, cerebrospinal fluid, reflexes, peripheral nerves, autonomic nervous system, sensory receptors, general senses, special senses, and life-span changes.
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="topic-lab-summary">
+          <strong>Laboratory topics:</strong> body orientation, cells and chemistry, diffusion and osmosis, DNA and protein-related cell processes, tissues and histology, the integumentary system, axial and appendicular skeleton, muscle anatomy, central nervous system anatomy, reflexes, and eye anatomy.
+        </div>
       </section>
 
       <section class="section">
@@ -604,4 +745,3 @@
   </div>
 </body>
 </html>
-
