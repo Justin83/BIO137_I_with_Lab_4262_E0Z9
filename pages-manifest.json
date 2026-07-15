@@ -10,7 +10,7 @@
       "category": "course-home",
       "data": "static",
       "status": "ready",
-      "description": "Internal index page \u2014 not for Blackboard"
+      "description": "Internal index page — not for Blackboard"
     },
     {
       "name": "About This Course",
@@ -90,7 +90,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "Introduction, Chemistry & Cell Biology \u2014 static overview with Why It Matters, LOs, Key Dates, To-Do list"
+      "description": "Introduction, Chemistry & Cell Biology — static overview with Why It Matters, LOs, Key Dates, To-Do list"
     },
     {
       "name": "Module 1 Schedule (Live)",
@@ -100,7 +100,7 @@
       "category": "module-overview",
       "data": "live-supabase",
       "status": "ready",
-      "description": "Introduction, Chemistry & Cell Biology \u2014 live Supabase schedule, day-grouped with auto late dates"
+      "description": "Introduction, Chemistry & Cell Biology — live Supabase schedule, day-grouped with auto late dates"
     },
     {
       "name": "Module 2 Overview",
@@ -110,7 +110,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "Metabolism, Tissues & the Integumentary System \u2014 static overview"
+      "description": "Metabolism, Tissues & the Integumentary System — static overview"
     },
     {
       "name": "Module 3 Overview",
@@ -120,7 +120,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "The Skeletal & Muscular Systems \u2014 static overview"
+      "description": "The Skeletal & Muscular Systems — static overview"
     },
     {
       "name": "Module 4 Overview",
@@ -130,7 +130,7 @@
       "category": "module-overview",
       "data": "static",
       "status": "ready",
-      "description": "The Nervous System \u2014 static overview"
+      "description": "The Nervous System — static overview"
     },
     {
       "name": "Final Review & Exams",
@@ -150,7 +150,17 @@
       "category": "test",
       "data": "static",
       "status": "draft",
-      "description": "Internal asset/style test page \u2014 not for Blackboard"
+      "description": "Internal asset/style test page — not for Blackboard"
+    },
+    {
+      "name": "Watch: Bone Tissue, Growth, and Development — Optional Review",
+      "path": "pages/watch/ch6-bone-growth-development-review.html",
+      "version": "1.0",
+      "module": 3,
+      "category": "watch",
+      "data": "static",
+      "status": "ready",
+      "description": "Optional older instructor review of cartilage growth, bone matrix and cells, woven and lamellar bone, and compact and spongy bone."
     }
   ]
 }
