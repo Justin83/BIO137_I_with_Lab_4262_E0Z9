@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIO 137 Watch: Bone Tissue, Growth, and Development — Optional Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #08315f; --blue2: #0d4d8c; --gold: #c69214;
+      --ink: #1a2d45; --muted: #4a6080; --line: #c5d3e0;
+      --paper: #ffffff; --soft: #eef4fb; --green: #137a39;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf2f7; color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 1000px; margin: auto; padding: 24px; }
+    .doc { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(8,49,95,.07); border-radius: 8px; overflow: hidden; }
+    .mod-hero { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+    .mod-hero-bar { width: 6px; background: var(--blue); flex-shrink: 0; }
+    .mod-hero-inner { padding: 20px 26px; flex: 1; display: flex; gap: 20px; align-items: flex-start; }
+    .mod-num { flex-shrink: 0; text-align: center; min-width: 52px; }
+    .mod-num .big { font-size: 3.2rem; font-weight: 800; color: var(--blue); line-height: 1; letter-spacing: -.04em; }
+    .mod-num .lbl { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #9aafcc; }
+    .mod-info { flex: 1; }
+    .eyebrow { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .67rem; margin-bottom: 5px; }
+    .mod-info h1 { margin: 0 0 6px; color: var(--blue); font-size: 1.75rem; line-height: 1.15; font-weight: 700; }
+    .mod-info .meta { color: var(--muted); font-size: .85rem; font-weight: 600; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: var(--soft); border: 1px solid var(--line); border-radius: 4px; padding: 5px 11px; display: flex; gap: 6px; align-items: center; }
+    .chip b { color: var(--blue); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; }
+    .chip span { font-weight: 600; font-size: .85rem; }
+    .chip.alt b { color: var(--gold); }
+    .section { padding: 20px 26px; border-top: 1px solid var(--line); }
+    h2 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 10px; }
+    p { margin: 0 0 10px; } p:last-child { margin-bottom: 0; }
+    .why { border-left: 3px solid var(--blue); background: #f3f7fb; padding: 13px 16px; font-size: .92rem; line-height: 1.65; }
+    .video-wrap { position: relative; width: 100%; padding-top: 56.25%; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #000; }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .hint { font-size: .78rem; color: var(--muted); margin-top: 10px; display: flex; gap: 6px; align-items: flex-start; }
+    .hint svg { flex: 0 0 auto; margin-top: 2px; }
+    .chapters { list-style: none; margin: 4px 0 0; padding: 0; }
+    .chapters li { display: flex; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+    .chapters li:last-child { border-bottom: 0; }
+    .ts { flex: 0 0 auto; min-width: 52px; height: 22px; padding: 0 8px; border: 0; border-radius: 6px; background: var(--blue); color: #fff; font-family: inherit; font-weight: 700; font-size: .72rem; cursor: pointer; margin-top: 1px; }
+    .ts:hover, .ts:focus { background: var(--blue2); outline: 2px solid var(--gold); outline-offset: 1px; }
+    .ch-t { font-size: .88rem; font-weight: 600; color: var(--ink); }
+    .ch-d { font-size: .82rem; color: var(--muted); }
+    .chapters li.skip-note { display: block; border-bottom: 0; margin: 8px 0; padding: 12px 15px; border: 1px dashed var(--gold); background: #fcf6e9; border-radius: 8px; }
+    .skip-note .sn-t { display: flex; align-items: center; gap: 7px; font-weight: 700; color: #7a5a12; font-size: .86rem; }
+    .skip-note .sn-d { color: #7a5a12; font-size: .82rem; margin-top: 3px; }
+    .dl-box { border-left: 3px solid var(--green); background: #effaf2; padding: 13px 16px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+    .dl-box .t { font-size: .9rem; max-width: 560px; } .dl-box .t b { color: var(--blue); }
+    .dl { display: inline-flex; align-items: center; gap: 7px; background: var(--blue); color: #fff; text-decoration: none; font-weight: 700; font-size: .85rem; padding: 10px 16px; border-radius: 6px; white-space: nowrap; }
+    .dl:hover, .dl:focus { background: var(--blue2); outline: 2px solid var(--gold); outline-offset: 2px; }
+    .dl-note { font-size: .75rem; color: var(--muted); margin-top: 10px; }
+    .footer { text-align: center; color: var(--muted); font-size: .85rem; margin: 18px 0; }
+    @media (max-width: 720px) { .mod-info h1 { font-size: 1.4rem; } .mod-num .big { font-size: 2.5rem; } .mod-hero-inner { gap: 14px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="doc">
+      <div class="mod-hero">
+        <div class="mod-hero-bar"></div>
+        <div class="mod-hero-inner">
+          <div class="mod-num"><div class="big">M3</div><div class="lbl">watch</div></div>
+          <div class="mod-info">
+            <div class="eyebrow">Module 3 &middot; Optional Review &middot; BIO 137 Summer 2026</div>
+            <h1>Bone Tissue, Growth, and Development</h1>
+            <div class="meta">Earlier instructor recording &middot; background review for the skeletal system</div>
+            <div class="chips"><div class="chip alt"><b>Viewing</b><span>Optional &middot; watch at your choosing</span></div><div class="chip"><b>Chapter</b><span>Ch. 6 review</span></div><div class="chip"><b>Runtime</b><span>~13 min</span></div><div class="chip"><b>Format</b><span>Older instructor video + transcript</span></div></div>
+          </div>
+        </div>
+      </div>
+      <section class="section">
+        <h2>Watch the Video</h2>
+        <div class="video-wrap"><iframe id="player" src="https://www.youtube-nocookie.com/embed/xJX1vwYiAkU?rel=0" title="Bone Tissue, Growth, and Development — Optional Review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="hint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Click any time marker below to jump to that part of the video.</span></div>
+      </section>
+      <section class="section"><h2>Chapters in This Video</h2><ul class="chapters"><li><button class="ts" data-start="0">0:00</button><div><div class="ch-t">Introduction: Bone Tissue and Bone Growth</div><div class="ch-d">Introduces the recording as a brief Chapter 6 review of bone tissue and growth before the axial and appendicular skeleton.</div></div></li>
+          <li><button class="ts" data-start="29">0:29</button><div><div class="ch-t">Functions of the Skeletal System</div><div class="ch-d">Reviews support, movement, protection, mineral storage, blood-cell production, and lipid storage.</div></div></li>
+          <li><button class="ts" data-start="72">1:12</button><div><div class="ch-t">Cartilage and Hyaline Bone Templates</div><div class="ch-d">Explains how hyaline cartilage serves as a developmental template for many bones.</div></div></li>
+          <li><button class="ts" data-start="101">1:41</button><div><div class="ch-t">Chondroblasts, Chondrocytes, Lacunae, and Perichondrium</div><div class="ch-d">Distinguishes cartilage cells, extracellular matrix, lacunae, and the surrounding perichondrium.</div></div></li>
+          <li><button class="ts" data-start="159">2:39</button><div><div class="ch-t">Articular Cartilage</div><div class="ch-d">Describes smooth cartilage at joint surfaces and its role in reducing friction.</div></div></li>
+          <li><button class="ts" data-start="186">3:06</button><div><div class="ch-t">Appositional and Interstitial Cartilage Growth</div><div class="ch-d">Compares growth from the surface with growth from within the cartilage matrix.</div></div></li>
+          <li><button class="ts" data-start="292">4:52</button><div><div class="ch-t">Bone Matrix and Hydroxyapatite</div><div class="ch-d">Reviews the inorganic mineral portion of bone matrix and the importance of calcium phosphate crystals.</div></div></li>
+          <li><button class="ts" data-start="318">5:18</button><div><div class="ch-t">Osteoblasts, Osteocytes, and Osteoclasts</div><div class="ch-d">Introduces the major bone-cell types and their roles in formation, maintenance, and resorption.</div></div></li>
+          <li class="skip-note"><div class="sn-t"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg> Important correction in the older recording</div><div class="sn-d">At about 6:02, the terms are reversed. Osteoblasts build bone and can become osteocytes; osteocytes are mature bone cells located in lacunae.</div></li>
+          <li><button class="ts" data-start="411">6:51</button><div><div class="ch-t">How Osteoclasts Resorb Bone</div><div class="ch-d">Uses the ruffled border to explain how osteoclasts break down mineralized bone.</div></div></li>
+          <li><button class="ts" data-start="450">7:30</button><div><div class="ch-t">Bone Cell Review</div><div class="ch-d">Summarizes the differences among osteoblasts, osteocytes, and osteoclasts.</div></div></li>
+          <li><button class="ts" data-start="531">8:51</button><div><div class="ch-t">Osteochondral Progenitor Cells</div><div class="ch-d">Explains how progenitor cells can develop into osteoblasts or chondroblasts.</div></div></li>
+          <li><button class="ts" data-start="572">9:32</button><div><div class="ch-t">Woven Bone vs. Lamellar Bone</div><div class="ch-d">Contrasts immature, less-organized woven bone with mature, layered lamellar bone.</div></div></li>
+          <li><button class="ts" data-start="686">11:26</button><div><div class="ch-t">Spongy Bone and Trabeculae</div><div class="ch-d">Describes trabeculae, marrow spaces, reduced weight, and alignment along lines of stress.</div></div></li>
+          <li><button class="ts" data-start="726">12:06</button><div><div class="ch-t">Compact Bone, Osteons, and Lamellae</div><div class="ch-d">Introduces osteons, concentric lamellae, interstitial lamellae, and circumferential lamellae.</div></div></li></ul></section>
+      <section class="section">
+        <h2>Transcript</h2>
+        <div class="dl-box"><div class="t"><b>Prefer to read along?</b> Download a clean transcript with the same chapter headings and time markings used above. Opens in any text editor or word processor.</div><a class="dl" href="ch6-bone-growth-development-review-transcript.txt" download="BIO137-Bone-Tissue-Growth-Development-Optional-Review-Transcript.txt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download transcript (.txt)</a></div>
+        <div class="dl-note">If the file opens in a new tab instead of downloading, right-click the button and choose &ldquo;Save link as&hellip;&rdquo;.</div>
+      </section>
+      <section class="section"><h2>What to Watch For</h2><div class="why"><p>This is an <strong>older instructor recording</strong> from an earlier version of the course. It is provided only as an optional review. Watch it at your choosing; it is not a new graded assignment and does not replace the current Module 3 materials.</p><p>Use it to refresh the foundations behind the skeletal system: <strong>cartilage growth</strong>, bone matrix and hydroxyapatite, the roles of <strong>osteoblasts, osteocytes, and osteoclasts</strong>, and the organization of woven, lamellar, spongy, and compact bone.</p><p>The most important correction is at about <strong>6:02</strong>: osteoblasts are bone-forming cells that can become osteocytes. Osteocytes are mature bone cells housed in lacunae.</p><p>This review is most useful before or alongside the current skeletal-system work, especially when the newer material assumes you remember how bone tissue is built and remodeled.</p></div></section>
+    </main>
+    <p class="footer">BIO 137 Human Anatomy &amp; Physiology I &middot; Summer 2026 &middot; Module 3 &middot; Optional Review</p>
+  </div>
+  <script>(function(){var player=document.getElementById('player');var VIDEO='xJX1vwYiAkU';document.querySelectorAll('.ts').forEach(function(btn){btn.addEventListener('click',function(){var start=btn.getAttribute('data-start')||'0';player.src='https://www.youtube-nocookie.com/embed/'+VIDEO+'?rel=0&autoplay=1&start='+start;player.scrollIntoView({behavior:'smooth',block:'center'});});});})();</script>
+</body>
+</html>
